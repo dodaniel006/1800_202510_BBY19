@@ -67,8 +67,8 @@ project-name/
 
 - Chell Jacques - BCIT CST Student who loves making things. Transgender Non-Binary
 - David - BCIT CST Student, enthuthiast programmer, looking to expand my knowledge and build more projects.
-- Daniel - BCIT CST Student with a passion for computer hardware. Fun fact: I have built 5,043,045 computers :).
-- Jazib - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+- Daiel - BCIT CST Student with a passion for computer hardware. Fun fact: I have built 5,043,045 computers :).
+- Jazib - BCIT CST Student loves all things tech and computers. Fun fact: Pro gamer.
 
 ---
 
