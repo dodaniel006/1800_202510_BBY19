@@ -64,8 +64,10 @@ project-name/
 ---
 
 ## Contributors
-- **Daniel** - BCIT CST Student with a passion for computer hardware. Fun fact: I have built 5 computers.
-- **Jazib** - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
+
+- Chell Jacques - BCIT CST Student who loves making things. Transgender Non-Binary
+- Daniel - BCIT CST Student with a passion for computer hardware. Fun fact: I have built 5 computers.
+- Jazib - BCIT CST Student, Frontend enthusiast with a knack for creative design. Fun fact: Has a collection of over 50 houseplants.
 
 ---
 
