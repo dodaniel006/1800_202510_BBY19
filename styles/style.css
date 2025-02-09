@@ -12,13 +12,18 @@
     background-color: #434343;
 }
 
-.login {
+.login, .hero-sign-up {
     background-color: #e05c66ff;
     color: white;
     border-color: transparent;
 }
 
-.login:hover {
+.login:hover, .hero-sign-up:hover {
     background-color: rgb(196, 83, 92);
     border-color: transparent;
 }
+
+/* .hero-sign-up{
+    background-color: #e05c66ff;
+    color: white;
+} */
