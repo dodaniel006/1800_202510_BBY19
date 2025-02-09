@@ -1,3 +1,12 @@
+@font-face {
+  font-family: Nautilus;
+  src: url(../fonts/Nautilus.otf);
+}
+
+body{
+  background-color: #fbeeef;
+}
+
 .d-inline-block {
   width: 150px;
   min-height: auto;
@@ -8,19 +17,30 @@
 }
 
 .container-fluid {
-  background-color: #434343;
+  background-color: #702e33;
 }
+
+
+#hero h1{
+  font-family: Nautilus;
+}
+
+/* This doesn't seem to be working */
+/* #hero-signup-box{
+  background-color: #f7d6d8;
+} */
 
 .login,
 .hero-sign-up {
   background-color: #e05c66ff;
   color: white;
   border-color: transparent;
+  font-family: Nautilus;
 }
 
 .login:hover,
 .hero-sign-up:hover {
-  background-color: rgb(196, 83, 92);
+  background-color: #5ce0d6;
   border-color: transparent;
 }
 
@@ -34,5 +54,5 @@ footer {
   padding: 8px;
   margin: 0;
   max-width: 100%;
-  background-color: #434343;
+  background-color: #702e33;
 }
