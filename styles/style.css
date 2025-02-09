@@ -1,29 +1,38 @@
 .d-inline-block {
-    width: 150px;
-    min-height: auto;
-
+  width: 150px;
+  min-height: auto;
 }
 
 .navbar {
-    padding: 0;
+  padding: 0;
 }
 
 .container-fluid {
-    background-color: #434343;
+  background-color: #434343;
 }
 
-.login, .hero-sign-up {
-    background-color: #e05c66ff;
-    color: white;
-    border-color: transparent;
+.login,
+.hero-sign-up {
+  background-color: #e05c66ff;
+  color: white;
+  border-color: transparent;
 }
 
-.login:hover, .hero-sign-up:hover {
-    background-color: rgb(196, 83, 92);
-    border-color: transparent;
+.login:hover,
+.hero-sign-up:hover {
+  background-color: rgb(196, 83, 92);
+  border-color: transparent;
 }
 
-/* .hero-sign-up{
-    background-color: #e05c66ff;
-    color: white;
-} */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer > .container {
+  padding: 8px;
+  margin: 0;
+  max-width: 100%;
+  background-color: #434343;
+}
