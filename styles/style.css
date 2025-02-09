@@ -1,1 +1,24 @@
+.d-inline-block {
+    width: 150px;
+    min-height: auto;
 
+}
+
+.navbar {
+    padding: 0;
+}
+
+.container-fluid {
+    background-color: #434343;
+}
+
+.login {
+    background-color: #e05c66ff;
+    color: white;
+    border-color: transparent;
+}
+
+.login:hover {
+    background-color: rgb(196, 83, 92);
+    border-color: transparent;
+}
