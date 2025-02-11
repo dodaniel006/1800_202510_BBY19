@@ -1,10 +1,21 @@
+/* COLOR PALATTE 
+URL: https://coolors.co/f60665-1c3144-00e8fc-ffba08-fff5f5
+*/
+
 @font-face {
   font-family: Nautilus;
-  src: url(../Fonts/Nautilus.otf);
+  src: url(../fonts/Nautilus.otf);
+}
+
+@font-face {
+  font-family: Garamond;
+  src: url("../fonts/EBGaramond-VariableFont_wght.ttf");
 }
 
 body{
-  background-color: whitesmoke;
+  background-color: #FFF5F5;
+  font-family: Garamond, Helvetica;
+  font-weight: bold;
 }
 
 .d-inline-block {
@@ -17,24 +28,17 @@ body{
 }
 
 .container-fluid {
-  background-color: #702e33;
+  background-color: #1C3144;
 }
 
-
-#hero h1{
+.hero-header{
   font-family: Nautilus;
-  /* This isn't working and I don't know why */
-  color: #e05c66;
+  color: #F60665;
 }
-
-/* This doesn't seem to be working */
-/* #hero-signup-box{
-  background-color: #f7d6d8;
-} */
 
 .login,
 .hero-sign-up {
-  background-color: #e05c66ff;
+  background-color: #F60665;
   color: white;
   border-color: transparent;
   font-family: Nautilus;
@@ -42,8 +46,20 @@ body{
 
 .login:hover,
 .hero-sign-up:hover {
-  background-color: #5ce0d6;
+  background-color: #00E8FC;
+  color: #1C3144;
   border-color: transparent;
+}
+
+/* .login:active,
+.hero-sign-up:active {
+  background-color: #1C3144;
+  color: #FFF5F5;
+  border-color: transparent;
+} */
+
+.signup-box{
+  background-color: #FFBA08;
 }
 
 footer {
@@ -56,5 +72,5 @@ footer {
   padding: 8px;
   margin: 0;
   max-width: 100%;
-  background-color: #702e33;
+  background-color: #1C3144;
 }
