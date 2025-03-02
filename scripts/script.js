@@ -1,4 +1,16 @@
-function sayHello() {
-  //   alert("hey");
+//---------------------------------
+// Your own functions here
+//---------------------------------
+function logout() {
+  firebase.auth().signOut().then(() => {
+      // Sign-out successful.
+      console.log("logging out user");
+    }).catch((error) => {
+      // An error happened.
+    });
 }
-// sayHello();
+
+function sayHello() {
+  //do something
+}
+//sayHello();    //invoke function
