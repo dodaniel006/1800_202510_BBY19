@@ -1,5 +1,40 @@
-/* COLOR PALATTE 
+/* Style Guide
+
+////////COLOURS\\\\\\\\\
+
 URL: https://coolors.co/f60665-1c3144-00e8fc-ffba08-fff5f5
+
+***CERISE***
+Primary headers, branding, buttons
+#F60665
+
+***PRUSSIAN BLUE***
+Dark background, dark text, Nav bar background, header/footer bar background,
+#1C3144
+
+***SNOW***
+Light text
+#FFF5F5
+
+***SELECTIVE YELLOW***
+Card background, containers, secondary headers
+#FFBA08
+
+***ELECTRIC BLUE***
+hover, highlights, onclick
+#00E8FC
+
+///////FONTS\\\\\\\\\
+
+***NAUTILUS***
+Branding, Primary headers, button text, text that needs *flair*
+
+***GARAMOND***
+Font for anything else not listed above.
+
+***HELVETICA***
+Backup font for if above fonts fail to load
+
 */
 
 /* General Styling */
@@ -88,4 +123,13 @@ footer {
   background-color: lightgray;
   padding: 2% 3%;
   height: 75vh;
+}
+
+legend{ 
+  font-family: Nautilus;
+  color: #1C3144;
+}
+
+.secondary-header {
+  color: #FFBA08;
 }
