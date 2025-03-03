@@ -2,6 +2,8 @@
 URL: https://coolors.co/f60665-1c3144-00e8fc-ffba08-fff5f5
 */
 
+/* General Styling */
+
 @font-face {
   font-family: Nautilus;
   src: url(../fonts/Nautilus.otf);
@@ -12,10 +14,11 @@ URL: https://coolors.co/f60665-1c3144-00e8fc-ffba08-fff5f5
   src: url("../fonts/EBGaramond-VariableFont_wght.ttf");
 }
 
-body{
+body {
   background-color: #F5F5F5;
   font-family: Garamond, Helvetica;
   font-weight: bold;
+  text-align: center;
 }
 
 .d-inline-block {
@@ -31,10 +34,26 @@ body{
   background-color: #1C3144;
 }
 
-.hero-header{
+.hero-header {
   font-family: Nautilus;
   color: #F60665;
 }
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer>.container {
+  padding: 8px;
+  margin: 0;
+  max-width: 100%;
+  background-color: #1C3144;
+}
+
+
+/* login.html Specific Styling */
 
 .login,
 .hero-sign-up {
@@ -58,19 +77,15 @@ body{
   border-color: transparent;
 } */
 
-.signup-box{
+.signup-box {
   background-color: #FFBA08;
 }
 
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
 
-.footer > .container {
-  padding: 8px;
-  margin: 0;
-  max-width: 100%;
-  background-color: #1C3144;
+/* Main.html Specific Styling */
+
+#event-container {
+  background-color: lightgray;
+  padding: 2% 3%;
+  height: 75vh;
 }
