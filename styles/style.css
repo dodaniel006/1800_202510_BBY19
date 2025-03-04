@@ -91,7 +91,8 @@ footer {
 /* login.html Specific Styling */
 
 .login,
-.hero-sign-up {
+.hero-sign-up,
+.primary-button {
   background-color: #F60665;
   color: white;
   border-color: transparent;
@@ -99,7 +100,8 @@ footer {
 }
 
 .login:hover,
-.hero-sign-up:hover {
+.hero-sign-up:hover,
+.primary-button:hover {
   background-color: #00E8FC;
   color: #1C3144;
   border-color: transparent;
