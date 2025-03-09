@@ -3,6 +3,7 @@
 node_modules/
 .vscode/
 firebaseAPI.js
+authentication.js
 host.js
 package.json
 package-lock.json
