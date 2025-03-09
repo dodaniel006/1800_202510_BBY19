@@ -1,177 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>SweetSpot - Create Event</title>
-    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
-    <meta name="comp1800 template" content="My 1800 App" />
 
-    <!------------------------>
-    <!-- Required meta tags -->
-    <!------------------------>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+  <title>SweetSpot - Create Event</title>
+  <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+  <meta name="comp1800 template" content="My 1800 App" />
 
-    <!------------------------------------------>
-    <!-- Bootstrap Library CSS JS CDN go here -->
-    <!------------------------------------------>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"
-    ></script>
+  <!------------------------>
+  <!-- Required meta tags -->
+  <!------------------------>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-------------------------------------------------------->
-    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-    <!-------------------------------------------------------->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    <link
-      type="text/css"
-      rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
-    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
+  <!------------------------------------------>
+  <!-- Bootstrap Library CSS JS CDN go here -->
+  <!------------------------------------------>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
 
-    <!-------------------------------------------->
-    <!-- Other libraries and styles of your own -->
-    <!-------------------------------------------->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-    <link rel="stylesheet" href="./styles/style.css" />
-    <link rel="stylesheet" href="./styles/calendar.css" />
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">
-          <img
-            src="images/SweetSpot_Logo.svg"
-            alt=""
-            width=""
-            height=""
-            class="d-inline-block align-text-top"
-          />
-        </a>
-        <button type="button" class="btn btn-primary login">Login</button>
-      </div>
-    </nav>
+  <!-------------------------------------------------------->
+  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+  <!-------------------------------------------------------->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
+  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
 
-    <!-- the body of your page goes here -->
-    <div id="main-content" class="row align-items-center g-lg-5 py-5">
-      <div class="col-lg-7 text-center text-lg-start">
-        <p class="col-lg-10 fs-4">
-          <span id="selected-date">Select a date to start!</span>
-        </p>
-        <!-- FORM -->
-        <form>
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <!-- name -->
-            <label for="eventInput-name" class="form-label align-self-start"
-              >Event name</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="eventInput-name"
-              aria-describedby="eventName"
-            />
+  <!-------------------------------------------->
+  <!-- Other libraries and styles of your own -->
+  <!-------------------------------------------->
+  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+  <link rel="stylesheet" href="./styles/style.css" />
+  <link rel="stylesheet" href="./styles/calendar.css" />
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav id="navbarPlaceholder"></nav>
+
+  <!-- the body of your page goes here -->
+  <div id="main-content" class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <p class="col-lg-10 fs-4">
+        <span id="selected-date">Select a date to start!</span>
+      </p>
+      <!-- FORM -->
+      <form>
+        <div class="mb-3 d-flex flex-column justify-content-center">
+          <!-- name -->
+          <label for="eventInput-name" class="form-label align-self-start">Event name</label>
+          <input type="text" class="form-control" id="eventInput-name" aria-describedby="eventName" />
+        </div>
+
+        <!-- dropdown -->
+        <div class="mb-3 d-flex flex-column justify-content-center">
+          <label for="eventInput-dropdown" class="form-label align-self-start">Dropdown</label>
+          <button class="btn btn-secondary dropdown-toggle align-self-start dropdown-override" type="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+
+        <!-- details -->
+        <div class="mb-3 d-flex flex-column justify-content-center">
+          <label for="eventInput-details" class="form-label align-self-start">Details</label>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <label for="floatingTextarea">Enter details here...</label>
           </div>
+        </div>
 
-          <!-- dropdown -->
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <label for="eventInput-dropdown" class="form-label align-self-start"
-              >Dropdown</label
-            >
-            <button
-              class="btn btn-secondary dropdown-toggle align-self-start dropdown-override"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dropdown
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </div>
+        <button type="submit" class="btn btn-primary submit">Submit</button>
+      </form>
+    </div>
 
-          <!-- details -->
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <label for="eventInput-details" class="form-label align-self-start"
-              >Details</label
-            >
-            <div class="form-floating">
-              <textarea
-                class="form-control"
-                placeholder="Leave a comment here"
-                id="floatingTextarea"
-              ></textarea>
-              <label for="floatingTextarea">Enter details here...</label>
-            </div>
-          </div>
-
-          <button type="submit" class="btn btn-primary submit">Submit</button>
-        </form>
-      </div>
-
-      <div class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
-        <!-- The calendar element -->
-        <div class="calendar">
-          <div class="calendar-header">
-            <button id="prev-month">‹</button>
-            <div id="month-year"></div>
-            <button id="next-month">›</button>
-          </div>
-          <div class="calendar-body">
+    <div class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
+      <!-- The calendar element -->
+      <div class="calendar">
+        <div class="calendar-header">
+          <button id="prev-month">‹</button>
+          <div id="month-year"></div>
+          <button id="next-month">›</button>
+        </div>
+        <div class="calendar-body">
+          <div class="calendar-weekdays">
             <div class="calendar-weekdays">
-              <div class="calendar-weekdays">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
-              </div>
+              <div>Sun</div>
+              <div>Mon</div>
+              <div>Tue</div>
+              <div>Wed</div>
+              <div>Thu</div>
+              <div>Fri</div>
+              <div>Sat</div>
             </div>
-            <div class="calendar-dates">
-              <!-- Dates will be populated here -->
-            </div>
+          </div>
+          <div class="calendar-dates">
+            <!-- Dates will be populated here -->
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <div class="container">
-        <span class="text-light">Sweetest Spot On Earth.</span>
-      </div>
-    </footer>
+  <!-- Footer -->
+  <nav id="footerPlaceholder"></nav>
 
-    <!---------------------------------------------->
-    <!-- Your own JavaScript functions go here    -->
-    <!---------------------------------------------->
+  <!---------------------------------------------->
+  <!-- Your own JavaScript functions go here    -->
+  <!---------------------------------------------->
 
-    <!-- Link to scripts of your own -->
-    <script src="./scripts/firebaseAPI.js"></script>
-    <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/authentication.js"></script>
-    <script src="./scripts/script.js"></script>
-    <script src="./scripts/calendar.js"></script>
-    <script>
-      logout(); //make sure user is logged out
-    </script>
-  </body>
+  <!-- Link to scripts of your own -->
+  <script src="./scripts/firebaseAPI.js"></script>
+  <script src="./scripts/skeleton.js"></script>
+  <script src="./scripts/authentication.js"></script>
+  <script src="./scripts/script.js"></script>
+  <script src="./scripts/calendar.js"></script>
+  <script>
+    logout(); //make sure user is logged out
+  </script>
+</body>
+
 </html>
