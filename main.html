@@ -45,15 +45,8 @@
   <!-- Your HTML Layout go here -->
   <!------------------------------>
 
-  <!-- our own navbar goes here -->
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="images/SweetSpot_Logo.svg" alt="SweetSpot Logo" class="d-inline-block align-text-top" />
-      </a>
-      <button onclick="document.location='index.html'" type="button" class="btn btn-primary login">Logout</button>
-    </div>
-  </nav>
+  <!-- Navbar -->
+  <nav id="navbarPlaceholder"></nav>
 
   <!-- the body of your page goes here -->
   <div class="container-fluid bg-light text-dark">
@@ -66,36 +59,28 @@
 
   <div id="event-container" class="container card shadow-sm">
     <div class="card shadow-sm h-100">
-      <svg class="event-thumbnail bd-placeholder-img card-img-top d-none" width="100%" height="225" xmlns="http://www.w3.org/2000/svg"
-        role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+      <svg class="event-thumbnail bd-placeholder-img card-img-top d-none" width="100%" height="225"
+        xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+        preserveAspectRatio="xMidYMid slice" focusable="false">
         <title>Placeholder</title>
-        <rect width="100%" height="100%" fill="#55595c"></rect><text y="50%" fill="#eceeef"
-          dy=".3em">Thumbnail</text>
+        <rect width="100%" height="100%" fill="#55595c"></rect><text y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
       </svg>
 
       <div class="card-body d-flex justify-content-center align-items-center gap-2 flex-column">
         <h5 class="card-text">You currently have no events!</h5>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group ">
-            <button class="btn btn-primary primary-button">Create Event</button>
+            <button onclick="document.location='createEvent.html'" class="btn btn-primary primary-button">Create Event</button>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- our own footer goes here-->
-  <nav id="footerPlaceholder">
-    <footer class="footer">
-      <div class="container">
-        <span class="text-light">Sweetest Spot On Earth.</span>
-      </div>
-    </footer>
-  </nav>
+  <!-- Footer -->
+  <nav id="footerPlaceholder"></nav>
 
-  <!---------------------------------------------->
-  <!-- Your own JavaScript functions go here    -->
-  <!---------------------------------------------->
+  <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI.js"></script>
   <script src="./scripts/skeleton.js"></script>
   <script src="./scripts/main.js"></script>
