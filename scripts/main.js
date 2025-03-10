@@ -65,6 +65,8 @@ function displayEvents(userID){     //Populate Event Gallery
                         newCard.querySelector('.event-date').innerHTML = date;
                         newCard.querySelector('.event-time').innerHTML = time;
                         newCard.querySelector('.event-location').innerHTML = location;
+                        console.log("Event ID: " + eventDoc.id);
+                        newCard.querySelector('a').href = "event-page.html?docID=" + eventDoc.id;
 
                         document.getElementById("event-gallery").appendChild(newCard);
                     }
@@ -72,7 +74,7 @@ function displayEvents(userID){     //Populate Event Gallery
                 })
 
                 }else{
-                    console.log($('#event-gallery').load('./text/noEvents.html'));
+                    console.log($('#event-gallery').load('./text/noEvents.html')); //if user has no events, prompt them to
                 }
                 
             })
