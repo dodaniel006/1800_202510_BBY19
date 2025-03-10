@@ -118,6 +118,10 @@ footer {
   background-color: #FFBA08;
 }
 
+.sit-center {
+  text-align: center;
+}
+
 
 /* Main.html Specific Styling */
 
@@ -134,4 +138,8 @@ legend{
 
 .secondary-header {
   color: #FFBA08;
+}
+
+.event-text{
+  text-align: left;
 }

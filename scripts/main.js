@@ -36,6 +36,8 @@ function insertNameFromFirestore() {
                 console.log(userName);
                 //$("#name-goes-here").text(userName); // jQuery
                 document.getElementById("name-goes-here").innerText = userName;
+
+                displayEvents(user.uid);
             })
         } else {
             console.log("No user is logged in."); // Log a message when no user is logged in
@@ -43,3 +45,36 @@ function insertNameFromFirestore() {
     })
 }
 insertNameFromFirestore();
+
+function displayEvents(userID){     //Populate Event Gallery
+    let template = document.getElementById("event-card-template");
+    db.collection("users").doc(userID).collection("events").get()
+        .then(allEvents => {
+            allEvents.forEach(doc => {
+                if (allEvents.size > 1){    //if more events than the init are present, create event cards
+                    eventInfo = db.collection("events").doc(doc.id);
+                    eventInfo.get().then(eventDoc => {
+                    if(eventDoc.id != "init"){
+                        let name = eventDoc.data().name;
+                        let date = eventDoc.data().date;
+                        let time = eventDoc.data().time;
+                        let location = eventDoc.data().location;
+                        let newCard = template.content.cloneNode(true);
+
+                        newCard.querySelector('.card-title').innerHTML = name;
+                        newCard.querySelector('.event-date').innerHTML = date;
+                        newCard.querySelector('.event-time').innerHTML = time;
+                        newCard.querySelector('.event-location').innerHTML = location;
+
+                        document.getElementById("event-gallery").appendChild(newCard);
+                    }
+                    
+                })
+
+                }else{
+                    console.log($('#event-gallery').load('./text/noEvents.html'));
+                }
+                
+            })
+        })
+}
