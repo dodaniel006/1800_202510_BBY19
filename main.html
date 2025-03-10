@@ -1,90 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>SweetSpot</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico" />
+    <meta name="comp1800 template" content="My 1800 App" />
 
-<head>
-  <title>SweetSpot</title>
-  <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-  <meta name="comp1800 template" content="My 1800 App" />
+    <!------------------------>
+    <!-- Required meta tags -->
+    <!------------------------>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!------------------------>
-  <!-- Required meta tags -->
-  <!------------------------>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!------------------------------------------>
+    <!-- Bootstrap Library CSS JS CDN go here -->
+    <!------------------------------------------>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-  <!------------------------------------------>
-  <!-- Bootstrap Library CSS JS CDN go here -->
-  <!------------------------------------------>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
+    <!-------------------------------------------------------->
+    <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
+    <!-------------------------------------------------------->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
+    />
+    <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
 
-  <!-------------------------------------------------------->
-  <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
-  <!-------------------------------------------------------->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
-  <!-- <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script> -->
+    <!-------------------------------------------->
+    <!-- Other libraries and styles of your own -->
+    <!-------------------------------------------->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
 
-  <!-------------------------------------------->
-  <!-- Other libraries and styles of your own -->
-  <!-------------------------------------------->
-  <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
-  <link rel="stylesheet" href="./styles/style.css">
+  <body>
+    <!------------------------------>
+    <!-- Your HTML Layout go here -->
+    <!------------------------------>
 
-</head>
+    <!-- Navbar -->
+    <nav id="navbarPlaceholder"></nav>
 
-<body>
-  <!------------------------------>
-  <!-- Your HTML Layout go here -->
-  <!------------------------------>
-
-  <!-- Navbar -->
-  <nav id="navbarPlaceholder"></nav>
-
-  <!-- the body of your page goes here -->
-  <div class="container-fluid bg-light text-dark">
-    <div class="container bg-light p-3">
-      <h1 class="">Good Morning, <span id="name-goes-here">...</span></h1>
-      <hr>
-      <p></p>
-    </div>
-  </div>
-
-  <div id="event-container" class="container card shadow-sm">
-    <div class="card shadow-sm h-100" id="event-gallery">
-    </div>
-  </div>
-
-  <template id="event-card-template">
-    <div class="card event-card m-1">
-      <img class="card-img-top event-img" src="./images/BBY01.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h3 class="card-title event-text"></h3>
-        <br/>
-        <h5 class="event-date event-text"></h5>
-        <h5 class="event-time event-text"></h5>
-        <h5 class="event-location event-text"></h5>
-        <a href="#" class="btn btn-primary primary-button">See More</a>
+    <!-- the body of your page goes here -->
+    <div class="container-fluid bg-light text-dark">
+      <div class="container bg-light p-3">
+        <h1 class="">Good Morning, <span id="name-goes-here">...</span></h1>
+        <hr />
+        <p></p>
       </div>
     </div>
-  </template>
 
-  <!-- Footer -->
-  <nav id="footerPlaceholder"></nav>
+    <div class="container-fluid bg-light text-dark">
+      <div class="container bg-light p-3">
+        <button
+          type="button"
+          class="btn btn-primary primary-button btn-lg"
+          onclick="document.location='createEvent.html'"
+        >
+          Create An Event
+        </button>
+      </div>
+    </div>
 
-  <!-- Link to scripts of your own -->
-  <script src="./scripts/firebaseAPI.js"></script>
-  <script src="./scripts/skeleton.js"></script>
-  <script src="./scripts/main.js"></script>
-  <!-- <script src="./scripts/script.js"></script> -->
+    <div id="event-container" class="container card shadow-sm">
+      <div class="card shadow-sm h-100" id="event-gallery"></div>
+    </div>
 
-</body>
+    <template id="event-card-template">
+      <div class="card event-card m-1">
+        <img
+          class="card-img-top event-img"
+          src="./images/BBY01.jpg"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h3 class="card-title event-text"></h3>
+          <br />
+          <h5 class="event-date event-text"></h5>
+          <h5 class="event-time event-text"></h5>
+          <h5 class="event-location event-text"></h5>
+          <a href="#" class="btn btn-primary primary-button">See More</a>
+        </div>
+      </div>
+    </template>
 
+    <!-- Footer -->
+    <nav id="footerPlaceholder"></nav>
+
+    <!-- Link to scripts of your own -->
+    <script src="./scripts/firebaseAPI.js"></script>
+    <script src="./scripts/skeleton.js"></script>
+    <script src="./scripts/main.js"></script>
+    <!-- <script src="./scripts/script.js"></script> -->
+  </body>
 </html>

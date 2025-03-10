@@ -1,8 +1,11 @@
+"use=strict";
 const calendarDates = document.querySelector(".calendar-dates");
 const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
+
+const submitBtn = document.getElementById("submit-event");
 
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
@@ -88,4 +91,44 @@ calendarDates.addEventListener("click", (e) => {
     );
     selectedDate.textContent = `Date Selected: ${e.target.textContent} ${months[currentMonth]} ${currentYear}`;
   }
+});
+
+function selectTime() {
+  let timeAm = document.getElementById("time-am").checked;
+  let timePm = document.getElementById("time-pm").checked;
+
+  console.log(timeAm);
+  console.log(timePm);
+
+  if (timeAm.checked) {
+    labelTimeAm.classList.add("btn-active");
+    labelTimePm.classList.remove("btn-active");
+  } else if (timePm.checked) {
+    labelTimeAm.classList.remove("btn-active");
+    labelTimePm.classList.add("btn-active");
+  }
+}
+
+function addEvent() {
+  // const newEvent = db.collection("events")
+
+  let eventForm = document.getElementById("event-form");
+  let eventName = document.getElementById("event-name");
+  let eventDetails = document.getElementById("event-details");
+
+  console.log(eventForm);
+  console.log(eventName);
+  console.log(selectedDate);
+  // console.log(eventDate); // Date Selected: 1 January 2021
+  // console.log(eventTime);
+
+  // newEvent.add()
+}
+
+timeAm.addEventListener("click", selectTime());
+timePm.addEventListener("change", selectTime());
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addEvent();
 });

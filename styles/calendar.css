@@ -62,19 +62,3 @@
   color: #fff;
   border-radius: 50%;
 }
-
-.dropdown-override,
-.submit {
-  width: min-content;
-  background-color: #f60665;
-  color: white;
-  border-color: transparent;
-  font-family: Nautilus;
-}
-
-.dropdown-override:hover,
-.submit:hover {
-  background-color: #00e8fc;
-  color: #1c3144;
-  border-color: transparent;
-}
