@@ -1,8 +1,12 @@
+"use=strict";
 const calendarDates = document.querySelector(".calendar-dates");
 const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
+let selectedDateFormItem;
+
+const submitBtn = document.getElementById("submit-event");
 
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
@@ -45,6 +49,7 @@ function renderCalendar(month, year) {
   // Populate the days
   for (let i = 1; i <= daysInMonth; i++) {
     const day = document.createElement("div");
+    day.classList.add("calendar-day");
     day.textContent = i;
 
     // Highlight today's date
@@ -82,10 +87,63 @@ nextMonthBtn.addEventListener("click", () => {
 });
 
 calendarDates.addEventListener("click", (e) => {
-  if (e.target.textContent !== "") {
-    console.log(
-      `You clicked on ${e.target.textContent} ${months[currentMonth]} ${currentYear}`
-    );
+  if (e.target.classList.contains("calendar-day")) {
     selectedDate.textContent = `Date Selected: ${e.target.textContent} ${months[currentMonth]} ${currentYear}`;
+    selectedDateFormItem = e.target.textContent;
   }
+});
+
+function addEvent(e) {
+  const auth = firebase.auth();
+
+  let eventName = document.getElementById("event-name");
+  let eventDetails = document.getElementById("event-details");
+  let selectedDay = selectedDateFormItem;
+  let selectedMonth = months[currentMonth];
+  let selectedYear = currentYear;
+
+  console.log("selectedDay: ", selectedDay);
+
+  let event = {
+    name: eventName.value,
+    details: eventDetails.value,
+    dateYear: selectedYear,
+    dateMonth: selectedMonth,
+    dateDay: selectedDay,
+  };
+
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      db.collection("users")
+        .doc(user.uid)
+        .get()
+        .then((doc) => {
+          if (doc.exists) {
+            event.host = doc.data().name;
+            event.hostId = user.uid;
+            console.log("final event: ", event);
+
+            db.collection("events")
+              .add(event)
+              .then((docRef) => {
+                console.log("Event added with ID: ", docRef.id);
+              })
+              .catch((error) => {
+                console.error("Error adding event: ", error);
+              });
+          }
+        })
+        .catch((error) => {
+          console.error("Error adding event: ", error);
+        });
+    }
+  });
+}
+
+// timeAm.addEventListener("click", selectTime());
+// timePm.addEventListener("change", selectTime());
+
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addEvent(e);
 });
