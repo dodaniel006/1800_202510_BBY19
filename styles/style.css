@@ -147,3 +147,8 @@ legend{
 .center {
   text-align: center;
 }
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}

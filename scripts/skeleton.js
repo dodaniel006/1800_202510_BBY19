@@ -23,9 +23,3 @@ function loadSkeleton() {
 
 loadSkeleton(); //invoke the function
 
-document.getElementById("aboutUs").addEventListener("click", clickAboutUs);
-
-function clickAboutUs() {
-    window.location.href="about_us.html";
-}
-
