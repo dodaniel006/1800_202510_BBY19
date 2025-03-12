@@ -50,7 +50,7 @@ Backup font for if above fonts fail to load
 }
 
 body {
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   font-family: Garamond, Helvetica;
   font-weight: bold;
   text-align: center;
@@ -66,12 +66,12 @@ body {
 }
 
 .container-fluid {
-  background-color: #1C3144;
+  background-color: #1c3144;
 }
 
 .hero-header {
   font-family: Nautilus;
-  color: #F60665;
+  color: #f60665;
 }
 
 footer {
@@ -80,20 +80,19 @@ footer {
   width: 100%;
 }
 
-.footer>.container {
+.footer > .container {
   padding: 8px;
   margin: 0;
   max-width: 100%;
-  background-color: #1C3144;
+  background-color: #1c3144;
 }
-
 
 /* login.html Specific Styling */
 
 .login,
 .hero-sign-up,
 .primary-button {
-  background-color: #F60665;
+  background-color: #f60665;
   color: white;
   border-color: transparent;
   font-family: Nautilus;
@@ -102,8 +101,20 @@ footer {
 .login:hover,
 .hero-sign-up:hover,
 .primary-button:hover {
-  background-color: #00E8FC;
-  color: #1C3144;
+  background-color: #00e8fc;
+  color: #1c3144;
+  border-color: transparent;
+}
+
+.btn-active {
+  background-color: #00e8fc;
+  color: #1c3144;
+  border-color: transparent;
+}
+
+.btn-inactive {
+  background-color: #1c3144;
+  color: #f60665;
   border-color: transparent;
 }
 
@@ -115,9 +126,12 @@ footer {
 } */
 
 .signup-box {
-  background-color: #FFBA08;
+  background-color: #ffba08;
 }
 
+.sit-center {
+  text-align: center;
+}
 
 /* Main.html Specific Styling */
 
@@ -127,11 +141,24 @@ footer {
   height: 75vh;
 }
 
-legend{ 
+legend {
   font-family: Nautilus;
-  color: #1C3144;
+  color: #1c3144;
 }
 
 .secondary-header {
-  color: #FFBA08;
+  color: #ffba08;
+}
+
+.event-text {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
 }

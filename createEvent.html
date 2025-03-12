@@ -16,9 +16,15 @@
   <!-- Bootstrap Library CSS JS CDN go here -->
   <!------------------------------------------>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
   <!-------------------------------------------------------->
@@ -40,7 +46,6 @@
 </head>
 
 <body>
-
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
 
@@ -50,38 +55,58 @@
       <p class="col-lg-10 fs-4">
         <span id="selected-date">Select a date to start!</span>
       </p>
+
       <!-- FORM -->
-      <form>
+      <form id="event-form">
         <div class="mb-3 d-flex flex-column justify-content-center">
           <!-- name -->
           <label for="eventInput-name" class="form-label align-self-start">Event name</label>
-          <input type="text" class="form-control" id="eventInput-name" aria-describedby="eventName" />
+          <input type="text" class="form-control" id="event-name" aria-describedby="eventName" />
         </div>
 
         <!-- dropdown -->
+        <!-- <div class="mb-3 d-flex flex-column justify-content-center">
+            <label for="eventInput-dropdown" class="form-label align-self-start"
+              >Dropdown</label
+            >
+            <button
+              class="btn btn-secondary dropdown-toggle align-self-start primary-button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Time
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">AM</a></li>
+              <li><a class="dropdown-item" href="#">PM</a></li>
+            </ul>
+          </div> -->
+
+        <!-- AM / PM Select -->
         <div class="mb-3 d-flex flex-column justify-content-center">
-          <label for="eventInput-dropdown" class="form-label align-self-start">Dropdown</label>
-          <button class="btn btn-secondary dropdown-toggle align-self-start dropdown-override" type="button"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          <label for="eventInput-toggle" class="form-label align-self-start">Time</label>
+          <div class="btn-group" role="group" aria-label="Time toggle">
+            <input type="radio" class="btn-check" name="time" id="time-am" autocomplete="off" checked />
+            <label class="btn btn-active" for="time-am">AM</label>
+
+            <input type="radio" class="btn-check" name="time" id="time-pm" autocomplete="off" />
+            <label class="btn btn-inactive" for="time-pm">PM</label>
+          </div>
         </div>
 
         <!-- details -->
         <div class="mb-3 d-flex flex-column justify-content-center">
           <label for="eventInput-details" class="form-label align-self-start">Details</label>
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+            <textarea id="event-details" class="form-control" placeholder="Leave a comment here"></textarea>
             <label for="floatingTextarea">Enter details here...</label>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary submit">Submit</button>
+        <button id="submit-event" type="submit" class="btn btn-primary primary-button">
+          Submit
+        </button>
       </form>
     </div>
 

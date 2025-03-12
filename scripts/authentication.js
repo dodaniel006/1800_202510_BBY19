@@ -28,6 +28,13 @@ var uiConfig = {
         }).catch(function (error) {
           console.log("Error adding new user: " + error);
         });
+
+        db.collection("users").doc(user.uid).collection("events").doc("init").set({
+          tag: "PLACEHOLDER"
+        }).catch(function (error) {
+          console.log("create user events collection failed: " + error);
+        }); //add events collection to user
+
       } else {
         return true;
       }
