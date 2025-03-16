@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="main.html">
+        <a class="navbar-brand mx-3" href="main.html">
             <img src="images/SweetSpot_Logo.svg" alt="SweetSpot Logo" class="d-inline-block align-text-top" />
         </a>
 
@@ -8,63 +8,35 @@
             Event</button>
 
         <!-- Settings Dropdown -->
-        <div class="dropdown">
+        <div class="dropdown mx-2">
             <a class="btn btn-secondary dropdown-toggle ml-50" role="button" id="dropdownMenuLink"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <img src="images/Settings_Icon.png" width="30px">
             </a>
 
             <div class="dropdown-menu dropdown-menu-right p-0 mt-1 border-0" aria-labelledby="dropdownMenuLink">
-                <ul class="dropdown-menu d-block position-static mx-0 shadow w-220px" data-bs-theme="light">
-                    <li>
-                        <a class="dropdown-item d-flex gap-2 align-items-center" href="index.html">
-                            <svg class="bi" width="16" height="16">
-                                <use xlink:href="#files"></use>
-                            </svg>
-                            logout
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
-                            <svg class="bi" width="16" height="16">
-                                <use xlink:href="#image-fill"></use>
-                            </svg>
-                            Photos
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
-                            <svg class="bi" width="16" height="16">
-                                <use xlink:href="#film"></use>
-                            </svg>
-                            Movies
-                        </a>
-                    </li>
-                    <li>
+                <ul class="settings-dropdown dropdown-menu d-block position-static rounded mx-0 shadow w-220px" data-bs-theme="light">
+
+                    
+                <!-- <li>
                         <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
                             <svg class="bi" width="16" height="16">
                                 <use xlink:href="#music-note-beamed"></use>
                             </svg>
                             Music
                         </a>
-                    </li>
+                    </li> -->
                     <li>
                         <a class="dropdown-item d-flex gap-2 align-items-center" href="#">
-                            <svg class="bi" width="16" height="16">
-                                <use xlink:href="#joystick"></use>
-                            </svg>
-                            Games
+                            Option
                         </a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
                     <li>
-                        <a class="dropdown-item dropdown-item-danger d-flex gap-2 align-items-center" href="#">
-                            <svg class="bi" width="16" height="16">
-                                <use xlink:href="#trash"></use>
-                            </svg>
-                            Trash
+                        <a class="dropdown-item d-flex gap-2 align-items-center logout" href="index.html">
+                            Logout
                         </a>
                     </li>
                 </ul>

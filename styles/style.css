@@ -75,12 +75,13 @@ body {
 }
 
 footer {
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
-  width: 100%;
+  width: 100%; */
 }
 
 .footer > .container {
+  gap: 20px;
   padding: 8px;
   margin: 0;
   max-width: 100%;
@@ -91,7 +92,8 @@ footer {
 
 .login,
 .hero-sign-up,
-.primary-button {
+.primary-button,
+.logout {
   background-color: #f60665;
   color: white;
   border-color: transparent;
@@ -100,7 +102,8 @@ footer {
 
 .login:hover,
 .hero-sign-up:hover,
-.primary-button:hover {
+.primary-button:hover,
+.logout:hover {
   background-color: #00e8fc;
   color: #1c3144;
   border-color: transparent;
