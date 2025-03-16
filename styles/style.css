@@ -74,11 +74,24 @@ body {
   color: #f60665;
 }
 
-footer {
-  /* position: fixed;
-  bottom: 0;
-  width: 100%; */
+.sweet-button {
+  background-color: #f60665;
+  color: white;
+  border-color: transparent;
+  font-family: Nautilus;
 }
+
+.sweet-button:hover {
+  background-color: #00e8fc;
+  color: #1c3144;
+  border-color: transparent;
+}
+
+/* footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+} */
 
 .footer > .container {
   gap: 20px;
@@ -89,25 +102,6 @@ footer {
 }
 
 /* login.html Specific Styling */
-
-.login,
-.hero-sign-up,
-.primary-button,
-.logout {
-  background-color: #f60665;
-  color: white;
-  border-color: transparent;
-  font-family: Nautilus;
-}
-
-.login:hover,
-.hero-sign-up:hover,
-.primary-button:hover,
-.logout:hover {
-  background-color: #00e8fc;
-  color: #1c3144;
-  border-color: transparent;
-}
 
 .btn-active {
   background-color: #00e8fc;
@@ -164,4 +158,10 @@ legend {
 .dropdown-menu-right {
   right: 0;
   left: auto;
+}
+
+/* event-page.html Specific Styling */
+
+#invite-container {
+    background-color: lightgray;
 }
