@@ -74,6 +74,10 @@ body {
   color: #f60665;
 }
 
+.light-container {
+  background-color: lightgrey;
+}
+
 .sweet-button {
   background-color: #f60665;
   color: white;
@@ -133,7 +137,6 @@ body {
 /* Main.html Specific Styling */
 
 #event-container {
-  background-color: lightgray;
   padding: 2% 3%;
   height: 75vh;
 }
@@ -163,5 +166,10 @@ legend {
 /* event-page.html Specific Styling */
 
 #invite-container {
-    background-color: lightgray;
+  display: none;
+}
+
+.code-container {
+  background-color: #1c3144;
+  height: 50px;
 }

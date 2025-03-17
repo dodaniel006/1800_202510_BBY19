@@ -4,6 +4,9 @@ const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
+const generateCodeButton = document.getElementById("generateCodeButton");
+const inviteContainer = document.getElementById("invite-container");
+const inviteCode = document.getElementById("eventCode");
 let selectedDateFormItem;
 
 const submitBtn = document.getElementById("submit-event");
@@ -101,6 +104,7 @@ function addEvent(e) {
   let selectedDay = selectedDateFormItem;
   let selectedMonth = months[currentMonth];
   let selectedYear = currentYear;
+  let eventCode = generateCode();
 
   console.log("selectedDay: ", selectedDay);
 
@@ -110,6 +114,7 @@ function addEvent(e) {
     dateYear: selectedYear,
     dateMonth: selectedMonth,
     dateDay: selectedDay,
+    eventCode: eventCode,
   };
 
   auth.onAuthStateChanged((user) => {
@@ -138,6 +143,28 @@ function addEvent(e) {
         });
     }
   });
+}
+
+generateCodeButton.addEventListener("click", function () {
+  let codeString = "";
+  for (let i = 0; i < 5; i++) {
+    codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
+  }
+  // const codeGenerated = true;
+  inviteContainer.style.display = "block";
+  inviteCode.innerHTML = codeString;
+  // return (codeString);
+}, { once: true });
+
+function generateCode() {
+  let codeString = "";
+  for (let i = 0; i < 5; i++) {
+    codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
+  }
+  // const codeGenerated = true;
+  // inviteContainer.style.display = "block";
+  // inviteCode.innerHTML = codeString;
+  return (codeString);
 }
 
 // timeAm.addEventListener("click", selectTime());

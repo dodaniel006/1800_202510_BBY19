@@ -111,9 +111,14 @@
 
         <!-- Invite code -->
         <div class="row d-flex justify-content-center">
-          <div id="invite-container" class="container card shadow-sm">
-            <button onclick="generateCode()" class="btn sweet-button mt-1">Generate Invite Code</button>
-            <span id="invitePlaceholder" class="mb-2"></span>
+          <div class="container light-container card shadow-sm">
+            <button id="generateCodeButton" class="btn sweet-button my-1">Display Invite Code</button>
+            <div id="invite-container" class="mb-2">
+              <span>Your Invite Code Is:</span>
+              <div id="eventCode"
+                class="code-container d-flex justify-content-center align-items-center text-light fs-3 rounded w-50 m-auto">
+              </div>
+            </div>
           </div>
         </div>
       </div>
