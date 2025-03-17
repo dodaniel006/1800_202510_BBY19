@@ -5,7 +5,7 @@ const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
 const generateCodeButton = document.getElementById("generateCodeButton");
-const inviteContainer = document.getElementById("invite-container");
+// const inviteContainer = document.getElementById("invite-container");
 const inviteCode = document.getElementById("eventCode");
 let selectedDateFormItem;
 
@@ -145,27 +145,20 @@ function addEvent(e) {
   });
 }
 
-generateCodeButton.addEventListener("click", function () {
-  let codeString = "";
-  for (let i = 0; i < 5; i++) {
-    codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
-  }
-  // const codeGenerated = true;
-  inviteContainer.style.display = "block";
-  inviteCode.innerHTML = codeString;
-  // return (codeString);
-}, { once: true });
-
 function generateCode() {
   let codeString = "";
   for (let i = 0; i < 5; i++) {
     codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
   }
-  // const codeGenerated = true;
-  // inviteContainer.style.display = "block";
-  // inviteCode.innerHTML = codeString;
   return (codeString);
 }
+
+generateCodeButton.addEventListener("click", function () {
+  let codeString = generateCode();
+  inviteCode.innerHTML = codeString;
+}, { once: true });
+
+
 
 // timeAm.addEventListener("click", selectTime());
 // timePm.addEventListener("change", selectTime());
