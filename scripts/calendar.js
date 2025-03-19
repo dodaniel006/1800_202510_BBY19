@@ -4,7 +4,7 @@ const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
-const generateCodeButton = document.getElementById("generateCodeButton");
+// const generateCodeButton = document.getElementById("generateCodeButton");
 // const inviteContainer = document.getElementById("invite-container");
 const inviteCode = document.getElementById("eventCode");
 let selectedDateFormItem;
@@ -104,7 +104,8 @@ function addEvent(e) {
   let selectedDay = selectedDateFormItem;
   let selectedMonth = months[currentMonth];
   let selectedYear = currentYear;
-  let eventCode = generateCode();
+  let selectedTime = document.querySelector('input[name="time"]:checked').value;
+  // let eventCode = generateCode();
 
   console.log("selectedDay: ", selectedDay);
 
@@ -114,7 +115,8 @@ function addEvent(e) {
     dateYear: selectedYear,
     dateMonth: selectedMonth,
     dateDay: selectedDay,
-    eventCode: eventCode,
+    selectedTime: selectedTime,
+    // eventCode: eventCode,
   };
 
   auth.onAuthStateChanged((user) => {
@@ -145,23 +147,56 @@ function addEvent(e) {
   });
 }
 
-function generateCode() {
-  let codeString = "";
-  for (let i = 0; i < 5; i++) {
-    codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
+// function generateCode() {
+//   let codeString = "";
+//   for (let i = 0; i < 5; i++) {
+//     codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
+//   }
+//   return codeString;
+// }
+
+// generateCodeButton.addEventListener(
+//   "click",
+//   function () {
+//     let codeString = generateCode();
+//     inviteCode.innerHTML = codeString;
+//   },
+//   { once: true }
+// );
+
+document.getElementById("time-am").addEventListener("click", () => {
+  swapActiveTime();
+});
+document.getElementById("time-pm").addEventListener("click", () => {
+  swapActiveTime();
+});
+
+function swapActiveTime() {
+  let timeAmBtn = document.getElementById("time-am");
+  let amInput = document.getElementById("time-am-input");
+  let timePmBtn = document.getElementById("time-pm");
+  let pmInput = document.getElementById("time-pm-input");
+  if (timeAmBtn.classList.contains("btn-active")) {
+    // remove active from AM and add to PM
+    timeAmBtn.classList.add("btn-inactive");
+    timeAmBtn.classList.remove("btn-active");
+    amInput.checked = false;
+
+    timePmBtn.classList.add("btn-active");
+    timePmBtn.classList.remove("btn-inactive");
+    pmInput.checked = true;
+    console.log("time-am-input: ", timeAmBtn);
+  } else {
+    // remove active from PM and add to AM
+    timeAmBtn.classList.add("btn-active");
+    timeAmBtn.classList.remove("btn-inactive");
+    amInput.checked = true;
+
+    timePmBtn.classList.add("btn-inactive");
+    timePmBtn.classList.remove("btn-active");
+    pmInput.checked = false;
   }
-  return (codeString);
 }
-
-generateCodeButton.addEventListener("click", function () {
-  let codeString = generateCode();
-  inviteCode.innerHTML = codeString;
-}, { once: true });
-
-
-
-// timeAm.addEventListener("click", selectTime());
-// timePm.addEventListener("change", selectTime());
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();

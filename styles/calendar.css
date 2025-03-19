@@ -62,3 +62,21 @@
   color: #fff;
   border-radius: 50%;
 }
+
+.btn-check:checked + .btn-active {
+  background-color: #f60665;
+  color: #fff5f5;
+  border-color: transparent;
+}
+
+.btn-check + .btn:hover {
+  background-color: #1c3144;
+  color: white;
+  border-color: transparent;
+}
+
+.btn.btn-inactive {
+  background-color: #6d6d6c;
+  color: black;
+  border-color: transparent;
+}
