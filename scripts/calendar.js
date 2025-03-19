@@ -107,6 +107,7 @@ function addEvent(e) {
   let selectedTime = document.querySelector('input[name="time"]:checked').value;
   let location = document.getElementById("event-location");
   // let eventCode = generateCode();
+  let hostID = db.collection("users").doc(auth.currentUser.uid);
 
   console.log("selectedDay: ", selectedDay);
 
@@ -119,6 +120,7 @@ function addEvent(e) {
     selectedTime: selectedTime,
     date: `${selectedMonth} ${selectedDay}, ${selectedYear}`,
     location: location.value,
+    hostID: hostID,
     // eventCode: eventCode,
   };
 
