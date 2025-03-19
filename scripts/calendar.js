@@ -105,17 +105,20 @@ function addEvent(e) {
   let selectedMonth = months[currentMonth];
   let selectedYear = currentYear;
   let selectedTime = document.querySelector('input[name="time"]:checked').value;
+  let location = document.getElementById("event-location");
   // let eventCode = generateCode();
 
   console.log("selectedDay: ", selectedDay);
 
   let event = {
     name: eventName.value,
-    details: eventDetails.value,
+    description: eventDetails.value,
     dateYear: selectedYear,
     dateMonth: selectedMonth,
     dateDay: selectedDay,
     selectedTime: selectedTime,
+    date: `${selectedMonth} ${selectedDay}, ${selectedYear}`,
+    location: location.value,
     // eventCode: eventCode,
   };
 
