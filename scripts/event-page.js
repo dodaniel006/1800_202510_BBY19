@@ -1,4 +1,6 @@
-function displayEventInfo(){
+let eventCodeToggle = false;
+
+function displayEventInfo() {
 	console.log("displayEvents");
 	let params = new URL(window.location.href);
 	let eventID = params.searchParams.get("docID");
@@ -14,15 +16,23 @@ function displayEventInfo(){
 
 		document.getElementById("event-title").innerHTML = eventName;
 		document.getElementById("event-date").innerHTML = "Date:	" + eventDate;
-		document.getElementById("event-time").innerHTML = "Time:	" +eventTime;
-		document.getElementById("event-location").innerHTML = "Location:	" +eventLocation;
+		document.getElementById("event-time").innerHTML = "Time:	" + eventTime;
+		document.getElementById("event-location").innerHTML = "Location:	" + eventLocation;
 		document.getElementById("description").innerHTML = eventDescription;
-		document.getElementById("eventCode").innterHTML = eventCode;
-
+		document.getElementById("eventCode").style.visibility = "hidden";
+		document.getElementById("eventCode").innerHTML = eventCode;
 	})
 }
 displayEventInfo();
 
-function displayEventCode() {
-	inviteContainer.style.display = "block";
-}
+document.getElementById("generateCodeButton").addEventListener(
+	"click",
+	function () {
+		eventCodeToggle = !eventCodeToggle;
+		if (eventCodeToggle) {
+			document.getElementById("eventCode").style.visibility = "visible";
+		} else {
+			document.getElementById("eventCode").style.visibility = "hidden";
+		}
+	},
+);

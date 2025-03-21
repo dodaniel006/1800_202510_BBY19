@@ -4,9 +4,6 @@ const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
-// const generateCodeButton = document.getElementById("generateCodeButton");
-// const inviteContainer = document.getElementById("invite-container");
-const inviteCode = document.getElementById("eventCode");
 let selectedDateFormItem;
 
 const submitBtn = document.getElementById("submit-event");
@@ -106,7 +103,7 @@ function addEvent(e) {
   let selectedYear = currentYear;
   let selectedTime = document.querySelector('input[name="time"]:checked').value;
   let location = document.getElementById("event-location");
-  // let eventCode = generateCode();
+  let eventCode = generateCode();
   let hostID = db.collection("users").doc(auth.currentUser.uid);
 
   console.log("selectedDay: ", selectedDay);
@@ -121,8 +118,16 @@ function addEvent(e) {
     date: `${selectedMonth} ${selectedDay}, ${selectedYear}`,
     location: location.value,
     hostID: hostID,
-    // eventCode: eventCode,
+    eventCode: eventCode,
   };
+
+  function generateCode() {
+    let codeString = "";
+    for (let i = 0; i < 5; i++) {
+      codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
+    }
+    return codeString;
+  }
 
   auth.onAuthStateChanged((user) => {
     if (user) {
@@ -151,23 +156,6 @@ function addEvent(e) {
     }
   });
 }
-
-// function generateCode() {
-//   let codeString = "";
-//   for (let i = 0; i < 5; i++) {
-//     codeString += String.fromCharCode(65 + Math.floor(Math.random() * 25));
-//   }
-//   return codeString;
-// }
-
-// generateCodeButton.addEventListener(
-//   "click",
-//   function () {
-//     let codeString = generateCode();
-//     inviteCode.innerHTML = codeString;
-//   },
-//   { once: true }
-// );
 
 document.getElementById("time-am").addEventListener("click", () => {
   swapActiveTime();
