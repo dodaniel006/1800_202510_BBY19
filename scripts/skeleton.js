@@ -18,6 +18,8 @@ function loadSkeleton() {
             console.log($('#footerPlaceholder').load('./text/footer.html'));
             console.log("Logged Out :(");
         }
+        console.log($('#enterCodePlaceholder').load('./text/enter_code_modal.html'));
+        console.log($('#enterCodeButtonPlaceholder').load('./text/enter_code_button.html'));
     });
 }
 
