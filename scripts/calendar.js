@@ -98,14 +98,11 @@ calendarDates.addEventListener("click", (e) => {
     selectedDateFormArray.splice(0, selectedDateFormArray.length);
     selectedDateFormArray.push(e.target.textContent);
 
-    console.log(e.target);
-    // e.target.siblings.forEach((sibling) => {
-    //   sibling.classList.remove("current-date");
-    // });
+    // Removes the highlight from the previously selected date
     Array.from(e.target.parentNode.children).filter((el) =>
       el !== e.target ? el.classList.remove("current-date") : null
     );
-    e.target.classList.add("current-date"); // Highlight the selected date
+    e.target.classList.add("current-date"); // Highlights the selected date
   }
 });
 
@@ -114,6 +111,7 @@ calendarDates.addEventListener("mousedown", (e) => {
   // mouseIsDown to true and clear previous date array
   mouseIsDown = true;
   selectedDateFormArray.splice(0, selectedDateFormArray.length);
+  // Removes the highlight from all previously selected dates
   Array.from(e.target.parentNode.children).filter((el) =>
     el !== e.target ? el.classList.remove("current-date") : null
   );
@@ -128,7 +126,7 @@ calendarDates.addEventListener("mouseover", (e) => {
     selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
       ", "
     )} ${months[currentMonth]} ${currentYear}`;
-    e.target.classList.add("current-date"); // Highlight the selected dates
+    e.target.classList.add("current-date"); // Highlights the selected dates
   }
 });
 
