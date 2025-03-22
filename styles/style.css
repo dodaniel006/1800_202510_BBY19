@@ -142,7 +142,7 @@ body {
 
 #event-container {
   padding: 2% 3%;
-  /* height: 75vh; */
+  height: 75vh;
 }
 
 legend {
