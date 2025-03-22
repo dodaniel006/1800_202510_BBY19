@@ -164,7 +164,7 @@ function addEvent(e) {
     selectedTime: selectedTime,
     date: `${selectedMonth} ${selectedDay}, ${selectedYear}`,
     location: location.value,
-    hostID: hostID,
+    planner: hostID,
     eventCode: eventCode,
   };
 
@@ -178,6 +178,7 @@ function addEvent(e) {
 
   auth.onAuthStateChanged((user) => {
     if (user) {
+      // First get the user's name to add to the event
       db.collection("users")
         .doc(user.uid)
         .get()
@@ -185,19 +186,37 @@ function addEvent(e) {
           if (doc.exists) {
             event.host = doc.data().name;
             event.hostId = user.uid;
-            console.log("final event: ", event);
 
+            // Then add the event to the events collection
             db.collection("events")
               .add(event)
               .then((docRef) => {
                 console.log("Event added with ID: ", docRef.id);
-              })
-              .catch((error) => {
-                console.error("Error adding event: ", error);
+
+                // Add a reference to the created event in the user's subcollection
+                db.collection("users")
+                  .doc(user.uid)
+                  .collection("events")
+                  .doc(docRef.id)
+                  .set({
+                    eventRef: docRef,
+                  })
+                  .then(() => {
+                    console.log(
+                      "Event reference added to user's subcollection"
+                    );
+                  })
+                  .catch((error) => {
+                    console.error(
+                      "Error adding event reference to user's subcollection: ",
+                      error
+                    );
+                  });
               });
           }
         })
         .catch((error) => {
+          console.log("EVENT NOT ADDED");
           console.error("Error adding event: ", error);
         });
     }
