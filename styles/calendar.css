@@ -32,6 +32,7 @@
 .calendar-dates {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
+  user-select: none;
 }
 
 .calendar-weekdays div,
@@ -54,7 +55,7 @@
 }
 
 .calendar-dates div:hover {
-  background-color: #f1f1f1;
+  background-color: #7c7979;
 }
 
 .current-date {

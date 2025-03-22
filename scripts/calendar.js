@@ -4,7 +4,7 @@ const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
-let selectedDateFormItem;
+let selectedDateFormArray = [];
 
 const submitBtn = document.getElementById("submit-event");
 
@@ -59,6 +59,10 @@ function renderCalendar(month, year) {
       month === today.getMonth()
     ) {
       day.classList.add("current-date");
+      // pre-select current day
+      selectedDate.textContent = `Date Selected: ${today.getDate()} 
+        ${months[today.getMonth()]} ${today.getFullYear()}`;
+      selectedDateFormArray.push(today.getDate());
     }
 
     calendarDates.appendChild(day);
@@ -86,10 +90,45 @@ nextMonthBtn.addEventListener("click", () => {
   renderCalendar(currentMonth, currentYear);
 });
 
+// CLICK event for selecting a date
 calendarDates.addEventListener("click", (e) => {
   if (e.target.classList.contains("calendar-day")) {
     selectedDate.textContent = `Date Selected: ${e.target.textContent} ${months[currentMonth]} ${currentYear}`;
-    selectedDateFormItem = e.target.textContent;
+    // Replace everything in array with the singular clicked date
+    selectedDateFormArray.splice(0, selectedDateFormArray.length);
+    selectedDateFormArray.push(e.target.textContent);
+
+    console.log(e.target);
+    // e.target.siblings.forEach((sibling) => {
+    //   sibling.classList.remove("current-date");
+    // });
+    Array.from(e.target.parentNode.children).filter((el) =>
+      el !== e.target ? el.classList.remove("current-date") : null
+    );
+    e.target.classList.add("current-date"); // Highlight the selected date
+  }
+});
+
+let mouseIsDown = false;
+calendarDates.addEventListener("mousedown", (e) => {
+  // mouseIsDown to true and clear previous date array
+  mouseIsDown = true;
+  selectedDateFormArray.splice(0, selectedDateFormArray.length);
+  Array.from(e.target.parentNode.children).filter((el) =>
+    el !== e.target ? el.classList.remove("current-date") : null
+  );
+});
+calendarDates.addEventListener("mouseup", (e) => {
+  mouseIsDown = false;
+});
+calendarDates.addEventListener("mouseover", (e) => {
+  if (!mouseIsDown) return;
+  if (e.target.classList.contains("calendar-day")) {
+    selectedDateFormArray.push(e.target.textContent);
+    selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
+      ", "
+    )} ${months[currentMonth]} ${currentYear}`;
+    e.target.classList.add("current-date"); // Highlight the selected dates
   }
 });
 
@@ -98,7 +137,8 @@ function addEvent(e) {
 
   let eventName = document.getElementById("event-name");
   let eventDetails = document.getElementById("event-details");
-  let selectedDay = selectedDateFormItem;
+
+  let selectedDay = selectedDateFormArray;
   let selectedMonth = months[currentMonth];
   let selectedYear = currentYear;
   let selectedTime = document.querySelector('input[name="time"]:checked').value;
