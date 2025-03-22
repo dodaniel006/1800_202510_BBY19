@@ -166,6 +166,7 @@ function addEvent(e) {
     location: location.value,
     planner: hostID,
     eventCode: eventCode,
+    dateConfirmed: false, // For use when confirmed the event (and provide highlight onto events)
   };
 
   function generateCode() {
