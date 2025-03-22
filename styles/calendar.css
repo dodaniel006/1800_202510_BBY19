@@ -81,3 +81,21 @@
   color: black;
   border-color: transparent;
 }
+
+#submit-event-mobile {
+  display: none;
+}
+
+@media only screen and (max-device-width: 992px) {
+  /* styles for mobile browsers smaller than 990px; */
+  #submit-event {
+    display: none;
+  }
+
+  #submit-event-mobile {
+    display: block;
+    /* 342px so as to max the calendar width of min-content */
+    max-width: 342px;
+    margin: auto;
+  }
+}

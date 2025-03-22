@@ -7,6 +7,7 @@ const selectedDate = document.getElementById("selected-date");
 let selectedDateFormArray = [];
 
 const submitBtn = document.getElementById("submit-event");
+const submitMobileBtn = document.getElementById("submit-event-mobile");
 
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
@@ -238,6 +239,11 @@ function swapActiveTime() {
 }
 
 submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addEvent(e);
+});
+
+submitMobileBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addEvent(e);
 });
