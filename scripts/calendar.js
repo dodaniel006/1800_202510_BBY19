@@ -111,6 +111,12 @@ calendarDates.addEventListener("mousedown", (e) => {
   // mouseIsDown to true and clear previous date array
   mouseIsDown = true;
   selectedDateFormArray.splice(0, selectedDateFormArray.length);
+  // Capture the initial date held down on
+  selectedDateFormArray.push(e.target.textContent);
+  selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
+    ", "
+  )} ${months[currentMonth]} ${currentYear}`;
+  e.target.classList.add("current-date"); // Highlights the selected dates
   // Removes the highlight from all previously selected dates
   Array.from(e.target.parentNode.children).filter((el) =>
     el !== e.target ? el.classList.remove("current-date") : null
@@ -122,11 +128,13 @@ calendarDates.addEventListener("mouseup", (e) => {
 calendarDates.addEventListener("mouseover", (e) => {
   if (!mouseIsDown) return;
   if (e.target.classList.contains("calendar-day")) {
-    selectedDateFormArray.push(e.target.textContent);
-    selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
-      ", "
-    )} ${months[currentMonth]} ${currentYear}`;
-    e.target.classList.add("current-date"); // Highlights the selected dates
+    if (!selectedDateFormArray.includes(e.target.textContent)) {
+      selectedDateFormArray.push(e.target.textContent);
+      selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
+        ", "
+      )} ${months[currentMonth]} ${currentYear}`;
+      e.target.classList.add("current-date"); // Highlights the selected dates
+    }
   }
 });
 
