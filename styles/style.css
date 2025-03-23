@@ -178,9 +178,14 @@ legend {
 .image-button {
   width: 60px; /* Set desired width */
   height: 65px; /* Set desired height */
-  background: url('/images/SweetSpot_AddEvent.png') no-repeat center center;
+  background: url('/images/SweetSpot_AddEvent.svg') no-repeat center center;
   background-size: cover;
-  background-color: #ffffff;
+  cursor: pointer;
+  transition: filter 0.3s ease-in-out;
+}
+
+.image-button:hover {
+  filter: brightness(1) invert(1) sepia(1) saturate(3) hue-rotate(160deg); /* Changes color on hover */
 }
 
 .image-menu {
