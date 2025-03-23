@@ -1,12 +1,40 @@
-// taget join btn
-console.log("AM I LOADED?");
-const joinBtn = document.getElementById("join-btn");
-console.log("joinBtn: ", joinBtn);
-
-joinBtn.addEventListener("click", (e) => {
-  //   e.preventDefault();
+document.getElementById("join-btn").addEventListener("click", (e) => {
   const code = document.getElementById("inviteCode").value;
-  console.log("JOINING EVENT");
 
-  // redirect to a specific event page with the code from "code" variable
+  if (new RegExp("^[A-Z]{5}$").test(code)) {
+    console.log("JOINING EVENT");
+
+    // redirect to a specific event page with the code from "code" variable
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        userID = user.uid;
+        db.collection("events")
+          .where("hostId", "==", userID)
+          .get()
+          .then((allEvents) => {
+            if (!allEvents.empty) {
+              allEvents.forEach((event) => {
+                if (event.data().eventCode === code) {
+                  console.log("Event found:", event.id);
+
+                  // Redirect to the event page with the event ID
+                  window.location.href = 'event-page.html?docID=${event.id}';
+                } else {
+                  console.log("No event found with the provided code.");
+                  alert("No event found with the provided code.");
+                }
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error fetching events:", error);
+          });
+      } else {
+        console.log("No user is logged in.");
+      }
+    });
+  } else {
+    alert("Invalid code. Please enter a valid code.");
+  }
+
 });
