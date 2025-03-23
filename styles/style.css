@@ -174,3 +174,27 @@ legend {
   color: #1c3144;
   height: 50px;
 }
+
+.image-button {
+  width: 75px; /* Set desired width */
+  height: 60px; /* Set desired height */
+  background: url('/images/add-event-button.png') no-repeat center center;
+  background-size: cover;
+  background-color: #f60665;
+}
+
+.image-settings {
+  width: 75px; /* Set desired width */
+  height: 60px; /* Set desired height */
+  background: url('/images/Settings_Icon.png') no-repeat center center;
+  background-size: cover;
+  background-color: #f60665;
+}
+
+.image-menu {
+  width: 75px; /* Set desired width */
+  height: 60px; /* Set desired height */
+  background: url('/images/menu_icon.png') no-repeat center center;
+  background-size: cover;
+  background-color: #f60665;
+}
