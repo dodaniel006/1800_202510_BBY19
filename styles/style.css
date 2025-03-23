@@ -176,19 +176,11 @@ legend {
 }
 
 .image-button {
-  width: 75px; /* Set desired width */
-  height: 60px; /* Set desired height */
-  background: url('/images/add-event-button.png') no-repeat center center;
+  width: 60px; /* Set desired width */
+  height: 65px; /* Set desired height */
+  background: url('/images/SweetSpot_AddEvent.png') no-repeat center center;
   background-size: cover;
-  background-color: #f60665;
-}
-
-.image-settings {
-  width: 75px; /* Set desired width */
-  height: 60px; /* Set desired height */
-  background: url('/images/settings_icon2.png') no-repeat center center;
-  background-size: cover;
-  background-color: #f60665;
+  background-color: #ffffff;
 }
 
 .image-menu {
