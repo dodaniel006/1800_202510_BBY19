@@ -86,15 +86,15 @@ function displayEvents(userID) {
     });
 }
 
-function readEnteredCode(enteredCode) {
-  // could do validation of entered code for inccorect for mater
-  // Get from DB all events
-  // use .where("eventCode", "==", enteredCode) to filter events to get the event they entered  
-  // put the event id or w/e into browses params
-  // redirect to event-page html
-  // document.querySelector("#inviteCodeSubmit").data-dismiss("modal");
-  console.log("Entered code: ", enteredCode);
-}
+// function readEnteredCode(enteredCode) {
+//   // could do validation of entered code for inccorect for mater
+//   // Get from DB all events
+//   // use .where("eventCode", "==", enteredCode) to filter events to get the event they entered  
+//   // put the event id or w/e into browses params
+//   // redirect to event-page html
+//   // document.querySelector("#inviteCodeSubmit").data-dismiss("modal");
+//   console.log("Entered code: ", enteredCode);
+// }
 
 // function displayEventsVer2(userID) {
 //   //Populate Event Gallery
