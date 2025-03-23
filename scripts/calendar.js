@@ -4,9 +4,10 @@ const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
 const selectedDate = document.getElementById("selected-date");
-let selectedDateFormItem;
+let selectedDateFormArray = [];
 
 const submitBtn = document.getElementById("submit-event");
+const submitMobileBtn = document.getElementById("submit-event-mobile");
 
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
@@ -59,6 +60,10 @@ function renderCalendar(month, year) {
       month === today.getMonth()
     ) {
       day.classList.add("current-date");
+      // pre-select current day
+      selectedDate.textContent = `Date Selected: ${today.getDate()} 
+        ${months[today.getMonth()]} ${today.getFullYear()}`;
+      selectedDateFormArray.push(today.getDate());
     }
 
     calendarDates.appendChild(day);
@@ -86,10 +91,51 @@ nextMonthBtn.addEventListener("click", () => {
   renderCalendar(currentMonth, currentYear);
 });
 
+// CLICK event for selecting a date
 calendarDates.addEventListener("click", (e) => {
   if (e.target.classList.contains("calendar-day")) {
     selectedDate.textContent = `Date Selected: ${e.target.textContent} ${months[currentMonth]} ${currentYear}`;
-    selectedDateFormItem = e.target.textContent;
+    // Replace everything in array with the singular clicked date
+    selectedDateFormArray.splice(0, selectedDateFormArray.length);
+    selectedDateFormArray.push(e.target.textContent);
+
+    // Removes the highlight from the previously selected date
+    Array.from(e.target.parentNode.children).filter((el) =>
+      el !== e.target ? el.classList.remove("current-date") : null
+    );
+    e.target.classList.add("current-date"); // Highlights the selected date
+  }
+});
+
+let mouseIsDown = false;
+calendarDates.addEventListener("mousedown", (e) => {
+  // mouseIsDown to true and clear previous date array
+  mouseIsDown = true;
+  selectedDateFormArray.splice(0, selectedDateFormArray.length);
+  // Capture the initial date held down on
+  selectedDateFormArray.push(e.target.textContent);
+  selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
+    ", "
+  )} ${months[currentMonth]} ${currentYear}`;
+  e.target.classList.add("current-date"); // Highlights the selected dates
+  // Removes the highlight from all previously selected dates
+  Array.from(e.target.parentNode.children).filter((el) =>
+    el !== e.target ? el.classList.remove("current-date") : null
+  );
+});
+calendarDates.addEventListener("mouseup", (e) => {
+  mouseIsDown = false;
+});
+calendarDates.addEventListener("mouseover", (e) => {
+  if (!mouseIsDown) return;
+  if (e.target.classList.contains("calendar-day")) {
+    if (!selectedDateFormArray.includes(e.target.textContent)) {
+      selectedDateFormArray.push(e.target.textContent);
+      selectedDate.textContent = `Dates Selected: ${selectedDateFormArray.join(
+        ", "
+      )} ${months[currentMonth]} ${currentYear}`;
+      e.target.classList.add("current-date"); // Highlights the selected dates
+    }
   }
 });
 
@@ -98,7 +144,8 @@ function addEvent(e) {
 
   let eventName = document.getElementById("event-name");
   let eventDetails = document.getElementById("event-details");
-  let selectedDay = selectedDateFormItem;
+
+  let selectedDay = selectedDateFormArray;
   let selectedMonth = months[currentMonth];
   let selectedYear = currentYear;
   let selectedTime = document.querySelector('input[name="time"]:checked').value;
@@ -117,8 +164,9 @@ function addEvent(e) {
     selectedTime: selectedTime,
     date: `${selectedMonth} ${selectedDay}, ${selectedYear}`,
     location: location.value,
-    hostID: hostID,
+    planner: hostID,
     eventCode: eventCode,
+    dateConfirmed: false, // For use when confirmed the event (and provide highlight onto events)
   };
 
   function generateCode() {
@@ -131,6 +179,7 @@ function addEvent(e) {
 
   auth.onAuthStateChanged((user) => {
     if (user) {
+      // First get the user's name to add to the event
       db.collection("users")
         .doc(user.uid)
         .get()
@@ -138,19 +187,37 @@ function addEvent(e) {
           if (doc.exists) {
             event.host = doc.data().name;
             event.hostId = user.uid;
-            console.log("final event: ", event);
 
+            // Then add the event to the events collection
             db.collection("events")
               .add(event)
               .then((docRef) => {
                 console.log("Event added with ID: ", docRef.id);
-              })
-              .catch((error) => {
-                console.error("Error adding event: ", error);
+
+                // Add a reference to the created event in the user's subcollection
+                db.collection("users")
+                  .doc(user.uid)
+                  .collection("events")
+                  .doc(docRef.id)
+                  .set({
+                    eventRef: docRef,
+                  })
+                  .then(() => {
+                    console.log(
+                      "Event reference added to user's subcollection"
+                    );
+                  })
+                  .catch((error) => {
+                    console.error(
+                      "Error adding event reference to user's subcollection: ",
+                      error
+                    );
+                  });
               });
           }
         })
         .catch((error) => {
+          console.log("EVENT NOT ADDED");
           console.error("Error adding event: ", error);
         });
     }
@@ -192,6 +259,11 @@ function swapActiveTime() {
 }
 
 submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  addEvent(e);
+});
+
+submitMobileBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addEvent(e);
 });
