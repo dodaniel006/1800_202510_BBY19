@@ -18,10 +18,11 @@ document.getElementById("join-btn").addEventListener("click", (e) => {
                   console.log("Event found:", event.id);
 
                   // Redirect to the event page with the event ID
-                  window.location.href = 'event-page.html?docID=${event.id}';
+                  window.location.href = 'event-page.html?docID=' + event.id;
                 } else {
                   console.log("No event found with the provided code.");
                   alert("No event found with the provided code.");
+                  // Optionally, display a message to the user
                 }
               });
             }
@@ -29,6 +30,7 @@ document.getElementById("join-btn").addEventListener("click", (e) => {
           .catch((error) => {
             console.error("Error fetching events:", error);
           });
+
       } else {
         console.log("No user is logged in.");
       }
