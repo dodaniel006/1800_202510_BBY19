@@ -8,18 +8,17 @@
                     <span>&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <form>
-                    <label for="inviteCode">Invite Code (5 uppercase letters):</label>
-                    <input type="text" id="inviteCode" name="inviteCode" pattern="[A-Z]{5}" title="Please enter exactly 5 uppercase letters (A-Z)." required />
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary sweet-button" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary sweet-button">Save changes</button>
-                    </div>
-                </form>
-
+            <div id="enter-code" class="modal-body">
+                <!-- <form> -->
+                <label for="inviteCode">Invite Code (5 uppercase letters):</label>
+                <input type="text" id="inviteCode" name="inviteCode" pattern="[A-Z]{5}"
+                    title="Please enter exactly 5 uppercase letters (A-Z)." required />
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary sweet-button" data-dismiss="modal">Close</button>
+                    <button type="button" id="inviteCodeSubmit" class="btn btn-primary sweet-button"
+                        onclick="readEnteredCode(document.getElementById('inviteCode').value)">Save changes</button>
+                </div>
             </div>
-
         </div>
     </div>
 </div>
