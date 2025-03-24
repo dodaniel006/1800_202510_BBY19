@@ -116,9 +116,11 @@ calendarDates.addEventListener("mousedown", (e) => {
     el !== e.target ? el.classList.remove("current-date") : null
   );
 });
+
 calendarDates.addEventListener("mouseup", (e) => {
   mouseIsDown = false;
 });
+
 calendarDates.addEventListener("mouseover", (e) => {
   if (!mouseIsDown) return;
   if (e.target.classList.contains("calendar-day")) {

@@ -1,3 +1,4 @@
-.current-date {
-  /* background-color: #f5f5f5; */
+.suggested-day {
+  background-color: rgb(160, 30, 138);
+  border-radius: 100%;
 }
