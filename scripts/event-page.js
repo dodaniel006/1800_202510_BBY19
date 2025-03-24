@@ -1,6 +1,6 @@
 "use=strict";
-let eventCodeToggle = false;
 
+let eventCodeToggle = false;
 const calendarDates = document.querySelector(".calendar-dates");
 const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
@@ -85,8 +85,8 @@ function displayEventInfo() {
       eventDate = doc.data().date;
       eventTime = doc.data().time;
       eventDescription = doc.data().description;
-
       selectedTime = doc.data().selectedTime;
+      eventCode = doc.data().eventCode;
 
       // Populate html with info
       document.getElementById("event-title").innerHTML = eventName;
@@ -135,14 +135,22 @@ function showPlannerTools(doc) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       eventPlanner = doc.data().hostId;
-      eventCode = doc.data().eventCode;
       console.log(user.uid); // Let's know who the logged-in user is by logging their UID
       console.log("Event Planner " + eventPlanner);
       if (user.uid == eventPlanner) {
-        console.log($("#plannerTools").load("./text/invite-code.html"));
-        document.addEventListener("DOMContentLoaded", function () {
+        $("#plannerTools").load("./text/invite-code.html", function () {
           document.getElementById("eventCode").style.visibility = "hidden";
           document.getElementById("eventCode").innerHTML = eventCode;
+          document.getElementById("toggleButton").addEventListener("click", () => {
+            eventCodeToggle = !eventCodeToggle;
+            if (eventCodeToggle) {
+              document.getElementById("eventCode").style.visibility = "visible";
+            } else {
+              document.getElementById("eventCode").style.visibility = "hidden";
+            }
+          });
+        });
+        document.addEventListener("DOMContentLoaded", function () {
         });
       }
     } else {
@@ -171,8 +179,4 @@ document.getElementById("submit-attendance").addEventListener("click", (e) => {
           console.log("Attendance submitted", myAttendance);
         });
     });
-});
-
-document.getElementById("generateCodeButton").addEventListener("click", (e) => {
-  
 });
