@@ -157,10 +157,18 @@ document.getElementById("submit-attendance").addEventListener("click", (e) => {
 
   db.collection("events")
     .doc(eventID)
-    .update({
-      attendance: myAttendance,
-    })
-    .then(() => {
-      console.log("Attendance submitted", myAttendance);
+    .get()
+    .then((doc) => {
+      let existingAttendance = doc.data().attendance || [];
+      let updatedAttendance = [...existingAttendance, ...myAttendance];
+
+      db.collection("events")
+        .doc(eventID)
+        .update({
+          attendance: updatedAttendance, // Updates the array with duplicates allowed
+        })
+        .then(() => {
+          console.log("Attendance submitted", myAttendance);
+        });
     });
 });
