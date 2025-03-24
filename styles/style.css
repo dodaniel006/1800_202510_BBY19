@@ -142,7 +142,12 @@ body {
 
 #event-container {
   padding: 2% 3%;
-  height: 75vh;
+  margin-bottom: 10%;
+  /* height: 75vh; <-- DO NOT RE-ENABLE THIS!!!*/ 
+}
+
+.footer-spacer {
+  height: 5%;
 }
 
 legend {
