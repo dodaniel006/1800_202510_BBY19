@@ -1,7 +1,7 @@
 function showMap() {
   // Replace with your own Mapbox access token
   mapboxgl.accessToken =
-    "pk.eyJ1IjoiZG1hcnRpbmV6MjEiLCJhIjoiY204Zmc5eXhwMGJxOTJqcHFhYzE1dng5ZyJ9.AvYuqLL6NRdQFCycduBxBQ";
+    "pk.eyJ1IjoiZG1hcnRpbmV6MjEiLCJhIjoiY204bmd1cTEzMDBpdzJxcHdxZngwd2t4cCJ9.I6BKiiI_214s2Q_r6En1jA";
 
   // Default location (YVR city hall) 49.26504440741209, -123.11540318587558
   let defaultCoords = { lat: 49.26504440741209, lng: -123.11540318587558 };
@@ -36,7 +36,6 @@ function showMap() {
       center: userLocation, // center the map at the user's location
       zoom: 12,
     });
-
     // Attach the geocoder to the map
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
