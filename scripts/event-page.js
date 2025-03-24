@@ -172,3 +172,7 @@ document.getElementById("submit-attendance").addEventListener("click", (e) => {
         });
     });
 });
+
+document.getElementById("generateCodeButton").addEventListener("click", (e) => {
+  
+});

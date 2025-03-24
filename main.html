@@ -50,52 +50,60 @@
   <!-- Your HTML Layout go here -->
   <!------------------------------>
 
+
+
+
   <!-- Navbar -->
   <nav id="navbarPlaceholder"></nav>
 
-  <!-- the body of your page goes here -->
-  <div class="container-fluid bg-light text-dark">
-    <div class="container bg-light p-3">
-      <h1 class="">Good Morning, <span id="name-goes-here">...</span></h1>
-      <hr />
-      <p></p>
-    </div>
-  </div>
-
-  <!-- Join Event Button -->
-  <div id="enterCodeButtonPlaceholder" class="container bg-light"></div>
-
-  <!-- Join Event Modal -->
-  <div id="enterCodePlaceholder"></div>
-
-  <div class="container-fluid bg-light text-dark">
-    <div class="container bg-light p-3">
-      <button type="button" class="btn btn-primary sweet-button btn-lg" onclick="document.location='create-event.html'">
-        Create An Event
-      </button>
-
-  <div id="event-container" class="container light-container card shadow-sm p-3">
-    <div class="card shadow-sm h-100" id="event-gallery"></div>
-  </div>
-
-  <div class="footer-spacer"></div>
-
-  <template id="event-card-template">
-    <div class="card event-card m-1">
-      <img class="card-img-top event-img" src="./images/BBY01.jpg" alt="Card image cap" />
-      <div class="card-body">
-        <h3 class="card-title event-text"></h3>
-        <br />
-        <h5 class="event-date event-text"></h5>
-        <h5 class="event-time event-text"></h5>
-        <h5 class="event-location event-text"></h5>
-        <a href="#" class="btn btn-primary sweet-button">See More</a>
+  <div class="content">
+    <!-- the body of your page goes here -->
+    <div class="container-fluid bg-light text-dark">
+      <div class="container bg-light p-3">
+        <h1 class="">Good Morning, <span id="name-goes-here">...</span></h1>
+        <hr />
+        <p></p>
       </div>
     </div>
-  </template>
 
+    <!-- Join Event Button -->
+    <div id="enterCodeButtonPlaceholder" class="container bg-light"></div>
+
+    <!-- Join Event Modal -->
+    <div id="enterCodePlaceholder"></div>
+
+    <div class="container-fluid bg-light text-dark">
+      <div class="container bg-light p-3">
+        <button type="button" class="btn btn-primary sweet-button btn-lg"
+          onclick="document.location='create-event.html'">
+          Create An Event
+        </button>
+      </div>
+    </div>
+
+    <div id="event-container" class="container light-container card shadow-sm p-3">
+      <div class="card shadow-sm h-100" id="event-gallery"></div>
+    </div>
+
+    <div class="footer-spacer"></div>
+
+    <template id="event-card-template">
+      <div class="card event-card m-1">
+        <img class="card-img-top event-img" src="./images/BBY01.jpg" alt="Card image cap" />
+        <div class="card-body">
+          <h3 class="card-title event-text"></h3>
+          <br />
+          <h5 class="event-date event-text"></h5>
+          <h5 class="event-time event-text"></h5>
+          <h5 class="event-location event-text"></h5>
+          <a href="#" class="btn btn-primary sweet-button">See More</a>
+        </div>
+      </div>
+    </template>
+  </div>
   <!-- Footer -->
   <nav id="footerPlaceholder"></nav>
+
 
   <!-- Link to scripts of your own -->
   <script src="./scripts/firebaseAPI.js"></script>

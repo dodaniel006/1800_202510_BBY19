@@ -71,138 +71,140 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-    <div id="main-content" class="row align-items-center g-lg-5 py-5">
-      <div class="col-lg-7 text-center text-lg-start">
-        <p class="col-lg-10 fs-4">
-          <span id="selected-date">Select a date to start!</span>
-        </p>
+     <div class="content">
+      <div id="main-content" class="content row align-items-center g-lg-5 py-5">
+        <div class="col-lg-7 text-center text-lg-start">
+          <p class="col-lg-10 fs-4">
+            <span id="selected-date">Select a date to start!</span>
+          </p>
 
-        <!-- FORM -->
-        <form id="event-form">
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <!-- name -->
-            <label for="eventInput-name" class="form-label align-self-start"
-              >Event name</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="event-name"
-              aria-describedby="eventName"
-            />
-          </div>
-
-          <!-- AM / PM Select -->
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <label for="eventInput-toggle" class="form-label align-self-start"
-              >Time</label
-            >
-            <div class="btn-group" role="group" aria-label="Time toggle">
-              <input
-                type="radio"
-                id="time-am-input"
-                class="btn-check"
-                name="time"
-                autocomplete="off"
-                checked
-                value="AM"
-              />
-              <label id="time-am" class="btn btn-active" for="time-am"
-                >AM</label
+          <!-- FORM -->
+          <form id="event-form">
+            <div class="mb-3 d-flex flex-column justify-content-center">
+              <!-- name -->
+              <label for="eventInput-name" class="form-label align-self-start"
+                >Event name</label
               >
-
               <input
-                type="radio"
-                id="time-pm-input"
-                class="btn-check"
-                name="time"
-                autocomplete="off"
-                value="PM"
-              />
-              <label id="time-pm" class="btn btn-inactive" for="time-pm"
-                >PM</label
-              >
-            </div>
-          </div>
-
-          <!-- LOCATION -->
-
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <label for="eventInput-name" class="form-label align-self-start"
-              >Location</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="event-location"
-              aria-describedby="eventLocation"
-            />
-            <div class="row pt-3">
-              <div class="col-md-12">
-                <div id="map" style="height: 400px"></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- DETAILS -->
-          <div class="mb-3 d-flex flex-column justify-content-center">
-            <label for="eventInput-details" class="form-label align-self-start"
-              >Details</label
-            >
-            <div class="form-floating">
-              <textarea
-                id="event-details"
+                type="text"
                 class="form-control"
-                placeholder="Leave a comment here"
-              ></textarea>
-              <label for="floatingTextarea">Enter details here...</label>
+                id="event-name"
+                aria-describedby="eventName"
+              />
             </div>
-          </div>
 
-          <button
-            id="submit-event"
-            type="submit"
-            class="btn btn-primary primary-button"
-          >
-            Submit
-          </button>
-        </form>
-      </div>
+            <!-- AM / PM Select -->
+            <div class="mb-3 d-flex flex-column justify-content-center">
+              <label for="eventInput-toggle" class="form-label align-self-start"
+                >Time</label
+              >
+              <div class="btn-group" role="group" aria-label="Time toggle">
+                <input
+                  type="radio"
+                  id="time-am-input"
+                  class="btn-check"
+                  name="time"
+                  autocomplete="off"
+                  checked
+                  value="AM"
+                />
+                <label id="time-am" class="btn btn-active" for="time-am"
+                  >AM</label
+                >
 
-      <div class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
-        <!-- The calendar element -->
-        <div class="calendar">
-          <div class="calendar-header">
-            <button id="prev-month">‹</button>
-            <div id="month-year"></div>
-            <button id="next-month">›</button>
-          </div>
-          <div class="calendar-body">
-            <div class="calendar-weekdays">
-              <div class="calendar-weekdays">
-                <div>Sun</div>
-                <div>Mon</div>
-                <div>Tue</div>
-                <div>Wed</div>
-                <div>Thu</div>
-                <div>Fri</div>
-                <div>Sat</div>
+                <input
+                  type="radio"
+                  id="time-pm-input"
+                  class="btn-check"
+                  name="time"
+                  autocomplete="off"
+                  value="PM"
+                />
+                <label id="time-pm" class="btn btn-inactive" for="time-pm"
+                  >PM</label
+                >
               </div>
             </div>
-            <div class="calendar-dates">
-              <!-- Dates will be populated here -->
+
+            <!-- LOCATION -->
+
+            <div class="mb-3 d-flex flex-column justify-content-center">
+              <label for="eventInput-name" class="form-label align-self-start"
+                >Location</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="event-location"
+                aria-describedby="eventLocation"
+              />
+              <div class="row pt-3">
+                <div class="col-md-12">
+                  <div id="map" style="height: 400px"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- DETAILS -->
+            <div class="mb-3 d-flex flex-column justify-content-center">
+              <label for="eventInput-details" class="form-label align-self-start"
+                >Details</label
+              >
+              <div class="form-floating">
+                <textarea
+                  id="event-details"
+                  class="form-control"
+                  placeholder="Leave a comment here"
+                ></textarea>
+                <label for="floatingTextarea">Enter details here...</label>
+              </div>
+            </div>
+
+            <button
+              id="submit-event"
+              type="submit"
+              class="btn btn-primary primary-button"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+
+        <div class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
+          <!-- The calendar element -->
+          <div class="calendar">
+            <div class="calendar-header">
+              <button id="prev-month">‹</button>
+              <div id="month-year"></div>
+              <button id="next-month">›</button>
+            </div>
+            <div class="calendar-body">
+              <div class="calendar-weekdays">
+                <div class="calendar-weekdays">
+                  <div>Sun</div>
+                  <div>Mon</div>
+                  <div>Tue</div>
+                  <div>Wed</div>
+                  <div>Thu</div>
+                  <div>Fri</div>
+                  <div>Sat</div>
+                </div>
+              </div>
+              <div class="calendar-dates">
+                <!-- Dates will be populated here -->
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <button
-        id="submit-event-mobile"
-        type="submit"
-        class="btn btn-primary primary-button"
-      >
-        Submit
-      </button>
+        <button
+          id="submit-event-mobile"
+          type="submit"
+          class="btn btn-primary primary-button"
+        >
+          Submit
+        </button>
+      </div>
     </div>
 
     <!-- Footer -->
