@@ -124,10 +124,39 @@ function swapActiveTime() {
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   addEvent(e);
+
+  // Shoot confetti
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+
+  // Toast here? Or perhaps we can throw it on main.html using session storage (See link below)
+  // https://stackoverflow.com/questions/44244193/display-toast-messages-after-redirecting-to-url
+
+  // Redirect to main after 1 sec, so the confetti can play a bit
+  setTimeout(() => {
+    window.location.href = "main.html";
+  }, 1000);
 });
 
 submitMobileBtn.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("submitMobileBtn clicked");
   addEvent(e);
+
+  // Shoot confetti
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 },
+  });
+
+  // Toast here? Or perhaps we can throw it on main.html using session storage (See link below)
+  // https://stackoverflow.com/questions/44244193/display-toast-messages-after-redirecting-to-url
+
+  // Redirect to main after 1 sec, so the confetti can play a bit
+  setTimeout(() => {
+    window.location.href = "main.html";
+  }, 1000);
 });

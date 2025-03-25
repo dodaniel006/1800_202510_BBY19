@@ -18,45 +18,50 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous"
-    />
+      crossorigin="anonymous" />
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
       integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
       integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous"
-    ></script>
+      crossorigin="anonymous"></script>
 
     <!-- MAPBOX -->
     <link
       href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css"
-      rel="stylesheet"
-    />
-    <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
-    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+      rel="stylesheet" />
+    <script
+      src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
+    <script
+      src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
+
+    <!-- Confetti -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 
     <!-------------------------------------------------------->
     <!-- Firebase 8 Library related CSS, JS, JQuery go here -->
     <!-------------------------------------------------------->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script
+      src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
     <link
       type="text/css"
       rel="stylesheet"
-      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
-    />
+      href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
@@ -71,7 +76,7 @@
     <nav id="navbarPlaceholder"></nav>
 
     <!-- the body of your page goes here -->
-     <div class="content">
+    <div class="content">
       <div id="main-content" class="content row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
           <p class="col-lg-10 fs-4">
@@ -82,22 +87,19 @@
           <form id="event-form">
             <div class="mb-3 d-flex flex-column justify-content-center">
               <!-- name -->
-              <label for="eventInput-name" class="form-label align-self-start"
-                >Event name</label
-              >
+              <label for="eventInput-name"
+                class="form-label align-self-start">Event name</label>
               <input
                 type="text"
                 class="form-control"
                 id="event-name"
-                aria-describedby="eventName"
-              />
+                aria-describedby="eventName" />
             </div>
 
             <!-- AM / PM Select -->
             <div class="mb-3 d-flex flex-column justify-content-center">
-              <label for="eventInput-toggle" class="form-label align-self-start"
-                >Time</label
-              >
+              <label for="eventInput-toggle"
+                class="form-label align-self-start">Time</label>
               <div class="btn-group" role="group" aria-label="Time toggle">
                 <input
                   type="radio"
@@ -106,11 +108,9 @@
                   name="time"
                   autocomplete="off"
                   checked
-                  value="AM"
-                />
-                <label id="time-am" class="btn btn-active" for="time-am"
-                  >AM</label
-                >
+                  value="AM" />
+                <label id="time-am" class="btn btn-active"
+                  for="time-am">AM</label>
 
                 <input
                   type="radio"
@@ -118,26 +118,22 @@
                   class="btn-check"
                   name="time"
                   autocomplete="off"
-                  value="PM"
-                />
-                <label id="time-pm" class="btn btn-inactive" for="time-pm"
-                  >PM</label
-                >
+                  value="PM" />
+                <label id="time-pm" class="btn btn-inactive"
+                  for="time-pm">PM</label>
               </div>
             </div>
 
             <!-- LOCATION -->
 
             <div class="mb-3 d-flex flex-column justify-content-center">
-              <label for="eventInput-name" class="form-label align-self-start"
-                >Location</label
-              >
+              <label for="eventInput-name"
+                class="form-label align-self-start">Location</label>
               <input
                 type="text"
                 class="form-control"
                 id="event-location"
-                aria-describedby="eventLocation"
-              />
+                aria-describedby="eventLocation" />
               <div class="row pt-3">
                 <div class="col-md-12">
                   <div id="map" style="height: 400px"></div>
@@ -147,15 +143,13 @@
 
             <!-- DETAILS -->
             <div class="mb-3 d-flex flex-column justify-content-center">
-              <label for="eventInput-details" class="form-label align-self-start"
-                >Details</label
-              >
+              <label for="eventInput-details"
+                class="form-label align-self-start">Details</label>
               <div class="form-floating">
                 <textarea
                   id="event-details"
                   class="form-control"
-                  placeholder="Leave a comment here"
-                ></textarea>
+                  placeholder="Leave a comment here"></textarea>
                 <label for="floatingTextarea">Enter details here...</label>
               </div>
             </div>
@@ -163,14 +157,14 @@
             <button
               id="submit-event"
               type="submit"
-              class="btn btn-primary primary-button"
-            >
+              class="btn btn-primary primary-button">
               Submit
             </button>
           </form>
         </div>
 
-        <div class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
+        <div
+          class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
           <!-- The calendar element -->
           <div class="calendar">
             <div class="calendar-header">
@@ -200,8 +194,7 @@
         <button
           id="submit-event-mobile"
           type="submit"
-          class="btn btn-primary primary-button"
-        >
+          class="btn btn-primary primary-button">
           Submit
         </button>
       </div>
