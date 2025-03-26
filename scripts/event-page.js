@@ -88,13 +88,21 @@ function displayEventInfo() {
       selectedTime = doc.data().selectedTime;
       eventCode = doc.data().eventCode;
 
+      if (!doc.data().dateConfirmed) {
+        dateIcon = "<span class='material-icons icon-text-align'>date_range</span>";
+      }else {
+        dateIcon = "<span class='material-icons icon-text-align'>today</span>";
+      }
+
       // Populate html with info
       document.getElementById("event-title").innerHTML = eventName;
-      document.getElementById("event-date").innerHTML = "Date:	" + eventDate;
+      document.getElementById("event-date").innerHTML = dateIcon + "<b>Date Range:</b> &nbsp" + eventDate;
       // document.getElementById("event-time").innerHTML = "Time:	" + eventTime;
-      document.getElementById("event-time").innerHTML = "Time:	" + selectedTime;
+      document.getElementById("event-time").innerHTML = 
+        "<span class='material-icons icon-text-align'>schedule</span><b>Time:</b> &nbsp" + selectedTime;
       document.getElementById("event-location").innerHTML =
-        "Location:	" + eventLocation;
+        "<span class='material-icons icon-text-align'>pin_drop</span><b>Location:</b> &nbsp" + eventLocation;
+      document.getElementById("event-about").innerHTML = "Get Excited About " + eventName + "!";
       document.getElementById("description").innerHTML = eventDescription;
       showPlannerTools(doc);
 

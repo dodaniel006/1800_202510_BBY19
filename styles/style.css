@@ -56,6 +56,10 @@ body {
   text-align: center;
 }
 
+.material-icons {
+  cursor: pointer;
+}
+
 .d-inline-block {
   width: 150px;
   min-height: auto;
@@ -168,8 +172,13 @@ legend {
   color: #ffba08;
 }
 
-.event-text {
+.event-details {
   text-align: left;
+}
+
+.event-details b {
+  font-family: Nautilus;
+  font-weight: normal;
 }
 
 .center {
@@ -182,6 +191,16 @@ legend {
 }
 
 /* event-page.html Specific Styling */
+
+.event-title {
+  font-family: Nautilus;
+}
+
+.event-about {
+  font-family: Nautilus;
+}
+
+
 
 .code-container {
   background-color: #fff5f5;
@@ -208,4 +227,9 @@ legend {
   background: url('/images/menu_icon.png') no-repeat center center;
   background-size: cover;
   background-color: #f60665;
+}
+
+.icon-text-align {
+  vertical-align: text-top;
+  margin-right: 1%;
 }
