@@ -80,7 +80,7 @@ function displayEvents(userID) {
             }
           });
         } else {
-          console.log($("#event-gallery").load("./text/noEvents.html")); //if user has no events, prompt them to
+          console.log($("#event-gallery").load("./text/no-events.html")); //if user has no events, prompt them to
         }
       });
     });
@@ -130,7 +130,7 @@ function displayEvents(userID) {
 //             }
 //           });
 //         } else {
-//           console.log($("#event-gallery").load("./text/noEvents.html")); //if user has no events, prompt them to
+//           console.log($("#event-gallery").load("./text/no-events.html")); //if user has no events, prompt them to
 //         }
 //       });
 //     });

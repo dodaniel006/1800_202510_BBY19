@@ -9,14 +9,14 @@ function loadSkeleton() {
 		        // If the "user" variable is not null, then someone is logged in
             // User is signed in.
             // Do something for the user here.
-            console.log($('#navbarPlaceholder').load('./text/nav_after_login.html'));
+            console.log($('#navbarPlaceholder').load('./text/nav-after-login.html'));
             console.log($('#footerPlaceholder').load('./text/footer-after-login.html'));
             console.log($('#enterCodePlaceholder').load('./text/enter-code-modal.html'));
             console.log($('#enterCodeButtonPlaceholder').load('./text/enter-code-button.html'));
             console.log("Logged In!");
         } else {
             // No user is signed in.
-            console.log($('#navbarPlaceholder').load('./text/nav_before_login.html'));
+            console.log($('#navbarPlaceholder').load('./text/nav-before-login.html'));
             console.log($('#footerPlaceholder').load('./text/footer.html'));
             console.log("Logged Out :(");
         }
