@@ -95,6 +95,11 @@ body {
   margin-bottom: 100px;
 }
 
+.listItem {
+  max-width: 250px;
+  margin: auto;
+}
+
 /* footer {
   position: fixed;
   bottom: 0;

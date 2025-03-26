@@ -138,7 +138,9 @@ function showPlannerTools(doc) {
       console.log(user.uid); // Let's know who the logged-in user is by logging their UID
       console.log("Event Planner " + eventPlanner);
       if (user.uid == eventPlanner) {
-        $("#plannerTools").load("./text/invite-code.html", function () {
+        $("#plannerTools").load("./text/planner-tools.html", function () {
+          let sweetMap = generateSweetMap(doc);
+          document.getElementById("sweetmapPlaceholder").innerHTML = sweetMap;
           document.getElementById("eventCode").style.visibility = "hidden";
           document.getElementById("eventCode").innerHTML = eventCode;
           document.getElementById("toggleButton").addEventListener("click", () => {
@@ -157,6 +159,58 @@ function showPlannerTools(doc) {
       console.log("No user is logged in."); // Log a message when no user is logged in
     }
   });
+}
+
+function generateSweetMap(doc) {
+  let dateSelections = doc.data().attendeeDateVotes;
+  let month = doc.data().dateMonth;
+  let consensusDate = [];
+  let consensusCount = [];
+
+  for (let i = 0; i < dateSelections.length; i++) {
+    if (consensusDate.includes(dateSelections[i])) {
+      consensusCount[consensusDate.indexOf(dateSelections[i])]++;
+    } else {
+      consensusDate.push(dateSelections[i]);
+      consensusCount.push(1);
+    }
+  }
+
+  for (let i = 0; i < consensusDate.length; i++) {
+    for (let j = 0; j < consensusDate.length - 1; j++) {
+      if (consensusCount[j] < consensusCount[j + 1]) {
+        // Use temporary variables for swapping
+        let tempCount = consensusCount[j];
+        consensusCount[j] = consensusCount[j + 1];
+        consensusCount[j + 1] = tempCount;
+
+        let tempDate = consensusDate[j];
+        consensusDate[j] = consensusDate[j + 1];
+        consensusDate[j + 1] = tempDate;
+      }
+    }
+  }
+
+  let chosenDateCount = [consensusCount[0]];
+  let chosenDates = [consensusDate[0]];
+  let valueCount = 0;
+  for (let i = 1; i < consensusCount.length; i++) {
+    if (consensusCount[i] == chosenDateCount[valueCount]) {
+      chosenDates[valueCount] += ", " + consensusDate[i];
+    } else {
+      valueCount++;
+      chosenDateCount.push(consensusCount[i]);
+      chosenDates.push(consensusDate[i]);
+    }
+  }
+
+  let sweetMap = "The most ideal days for the event are:<br><ol>";
+  for (let i = 0; i < chosenDates.length; i++) {
+    console.log(chosenDates[i] + " | " + chosenDateCount[i]);
+    sweetMap += "<li class=\"listItem\">" + month + " " + chosenDates[i] + " with " + chosenDateCount[i] + " votes.</li>";
+  }
+  sweetMap += "</ol>";
+  return sweetMap;
 }
 
 document.getElementById("submit-attendance").addEventListener("click", (e) => {
