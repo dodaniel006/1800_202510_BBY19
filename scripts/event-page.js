@@ -143,8 +143,9 @@ function showPlannerTools(doc) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       eventPlanner = doc.data().hostId;
-      console.log(user.uid); // Let's know who the logged-in user is by logging their UID
-      console.log("Event Planner " + eventPlanner);
+       // Lets us know who the logged-in user is by logging their UID
+      console.log("Current User: " + user.uid);
+      console.log("Event Planner: " + eventPlanner);
       if (user.uid == eventPlanner) {
         $("#plannerTools").load("./text/planner-tools.html", function () {
           let sweetMap = generateSweetMap(doc);
@@ -169,21 +170,26 @@ function showPlannerTools(doc) {
   });
 }
 
+// Function that gets the Dates voted on by attendees and returns a string with the most popular dates
 function generateSweetMap(doc) {
-  let dateSelections = doc.data().attendeeDateVotes;
+  //Getting the necessary data from the database
+  let attendeeDateVotes = doc.data().attendeeDateVotes;
   let month = doc.data().dateMonth;
   let consensusDate = [];
   let consensusCount = [];
 
-  for (let i = 0; i < dateSelections.length; i++) {
-    if (consensusDate.includes(dateSelections[i])) {
-      consensusCount[consensusDate.indexOf(dateSelections[i])]++;
+  // Loop that goes through the dates and adds them to a list if they're new
+  // and increases the count if they're already in the list
+  for (let i = 0; i < attendeeDateVotes.length; i++) {
+    if (consensusDate.includes(attendeeDateVotes[i])) {
+      consensusCount[consensusDate.indexOf(attendeeDateVotes[i])]++;
     } else {
-      consensusDate.push(dateSelections[i]);
+      consensusDate.push(attendeeDateVotes[i]);
       consensusCount.push(1);
     }
   }
 
+  // Sorting the dates by the number of votes
   for (let i = 0; i < consensusDate.length; i++) {
     for (let j = 0; j < consensusDate.length - 1; j++) {
       if (consensusCount[j] < consensusCount[j + 1]) {
@@ -199,6 +205,7 @@ function generateSweetMap(doc) {
     }
   }
 
+  // Concatenating the top 3 position dates with the same number of votes
   let chosenDateCount = [consensusCount[0]];
   let chosenDates = [consensusDate[0]];
   let valueCount = 0;
@@ -212,6 +219,7 @@ function generateSweetMap(doc) {
     }
   }
 
+  // Creating the Ordered List with the most popular dates
   let sweetMap = "The most ideal days for the event are:<br><ol>";
   for (let i = 0; i < chosenDates.length; i++) {
     console.log(chosenDates[i] + " | " + chosenDateCount[i]);

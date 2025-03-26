@@ -1,9 +1,13 @@
+// Event listener for the join button
 document.getElementById("join-btn").addEventListener("click", (e) => {
   const code = document.getElementById("inviteCode").value;
 
+  // Check if the code is in the correct format
+  // The code should be 5 capital letters
   if (new RegExp("^[A-Z]{5}$").test(code)) {
     console.log("Acceptable code format. Looking for event with code: ", code);
 
+    // Fetch the event with the code from the database
     db.collection("events")
       .where("eventCode", "==", code)
       .get()
