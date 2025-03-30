@@ -86,10 +86,22 @@ function displayEvents(userID) {
     });
 }
 
+
+function logout() {
+  firebase.auth().signOut().then(() => {
+    // Sign-out successful.
+    console.log("logging out user");
+    window.location.replace("./index.html");
+  }).catch((error) => {
+    console.log("firebase auth logout fail");
+  });
+}
+
+
 // function readEnteredCode(enteredCode) {
 //   // could do validation of entered code for inccorect for mater
 //   // Get from DB all events
-//   // use .where("eventCode", "==", enteredCode) to filter events to get the event they entered  
+//   // use .where("eventCode", "==", enteredCode) to filter events to get the event they entered
 //   // put the event id or w/e into browses params
 //   // redirect to event-page html
 //   // document.querySelector("#inviteCodeSubmit").data-dismiss("modal");

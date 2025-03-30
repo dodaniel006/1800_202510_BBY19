@@ -1,21 +1,31 @@
-<div class="container">
-	<div class="container selective-yellow card text-center">
-		<h2>Current best dates:</h2>
-		<span id="sweetmapUserInfoPlaceholder"></span>
-		<span id="sweetmapPlaceholder"></span>
+<div class="card selective-yellow shadow border-dark">
+	<div class="card-header planner-tools">
+		<h2 class="nautilus pt-2">This is your Event!</h2>
 	</div>
 
-	<br>
-
-	<div class="container light-container card shadow-sm selective-yellow">
-		<button id="toggleButton" class="btn sweet-button my-1">
-			Display/Hide Invite Code
-		</button>
-		<div id="invite-container" class="mb-2">
-			<span>Your Invite Code Is:</span>
-			<div class="code-container d-flex justify-content-center align-items-center fs-3 rounded w-50 m-auto">
-				<span id="eventCode"></span>
+	<div class="card-body">
+		<div class="container planner-tools card text-center mb-2">
+			<h2>Current best dates:</h2>
+			<span id="sweetmapUserInfoPlaceholder"></span>
+			<span id="sweetmapPlaceholder"></span>
+		</div>
+	
+	
+		<div class="container planner-tools card">
+			
+			<div id="invite-container" class="mb-2">
+				<h2 class="nautilus">Invite Code</h2>
+	
+				<div class="code-container d-flex justify-content-center align-items-center fs-3 rounded w-50 m-auto">
+					<span id="eventCode"></span>
+				</div>
 			</div>
+			<button id="toggleButton" class="btn sweet-button my-1">
+				Display/Hide Invite Code
+			</button>
 		</div>
 	</div>
+
+	
+
 </div>

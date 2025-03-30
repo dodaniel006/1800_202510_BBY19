@@ -192,14 +192,20 @@ legend {
 
 /* event-page.html Specific Styling */
 
-.event-title {
+.nautilus {
   font-family: Nautilus;
 }
 
-.event-about {
-  font-family: Nautilus;
+.planner-tools {
+  background-color: #1c3144;
+  color: #f5f5f5;
+  padding: 2%;
 }
 
+.planner-header {
+  color: #f60665;
+  background-color: #1c3144;
+}
 
 
 .code-container {
