@@ -217,14 +217,50 @@ legend {
 .image-button {
   width: 60px; /* Set desired width */
   height: 65px; /* Set desired height */
-  background: url('/images/SweetSpot_AddEvent.svg') no-repeat center center;
-  background-size: cover;
   cursor: pointer;
-  transition: filter 0.3s ease-in-out;
+  /*transition: filter 0.3s ease-in-out;*/
+  text-shadow: #fff5f5;
 }
 
-.image-button:hover {
-  filter: brightness(1) invert(1) sepia(1) saturate(3) hue-rotate(160deg); /* Changes color on hover */
+/* .image-button:hover {
+  filter: brightness(1) invert(1) sepia(1) saturate(3) hue-rotate(160deg); /* Changes color on hover 
+} */
+
+.create-button {
+  background: url('/images/SweetSpot_CreateEventV2wb.svg') no-repeat center center;
+  background-size: cover;
+  transition: background 0.3s ease-in-out;
+}
+
+.create-button:hover{
+  background: url('/images/SweetSpot_CreateEventV2wbHOVER.svg') no-repeat center center;
+  background-size: cover;
+}
+
+.add-button {
+  background: url('/images/SweetSpot_AddEvent.svg') no-repeat center center;
+  background-size: cover;
+  transition: background 0.3s ease-in-out;
+}
+
+.add-button:hover{
+  background: url('/images/SweetSpot_AddEventHOVER.svg') no-repeat center center;
+  background-size: cover;
+}
+
+.home-button {
+  width: 80px;
+  height: 80px;
+  margin-top: -15px;
+  cursor: pointer;
+  background: url('/images/HomeV3.svg') no-repeat center center;
+  background-size: cover;
+  transition: background 0.3s ease-in-out;
+}
+
+.home-button:hover{
+  background: url('/images/HomeV3HOVER.svg') no-repeat center center;
+  background-size: cover;
 }
 
 .image-menu {
@@ -238,4 +274,24 @@ legend {
 .icon-text-align {
   vertical-align: text-top;
   margin-right: 1%;
+}
+
+:root {
+  --x: 50px;
+  --y: 20px;
+}
+
+.nav-shape {
+  background-color: #1c3144;
+  height: 80px;
+  width: 160px;
+  /* border-radius: 100px 100px 0 0 / 50px 50px 0 0; */
+  /*border-radius: var(--x) var(--x) 0 0 / var(--y) var(--y) 0 0;*/
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -55px;
 }
