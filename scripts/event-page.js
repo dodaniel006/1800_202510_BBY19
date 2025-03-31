@@ -83,6 +83,7 @@ function displayEventInfo() {
       eventName = doc.data().name;
       eventLocation = doc.data().location;
       eventDate = doc.data().date;
+      eventDays = doc.data().dateDay;
       eventTime = doc.data().time;
       eventDescription = doc.data().description;
       selectedTime = doc.data().selectedTime;
@@ -90,7 +91,7 @@ function displayEventInfo() {
 
       if (!doc.data().dateConfirmed) {
         dateIcon = "<span class='material-icons icon-text-align'>date_range</span>";
-      }else {
+      } else {
         dateIcon = "<span class='material-icons icon-text-align'>today</span>";
       }
 
@@ -98,7 +99,7 @@ function displayEventInfo() {
       document.getElementById("event-title").innerHTML = eventName;
       document.getElementById("event-date").innerHTML = dateIcon + "<b>Date Range:</b> &nbsp" + eventDate;
       // document.getElementById("event-time").innerHTML = "Time:	" + eventTime;
-      document.getElementById("event-time").innerHTML = 
+      document.getElementById("event-time").innerHTML =
         "<span class='material-icons icon-text-align'>schedule</span><b>Time:</b> &nbsp" + selectedTime;
       document.getElementById("event-location").innerHTML =
         "<span class='material-icons icon-text-align'>pin_drop</span><b>Location:</b> &nbsp" + eventLocation;
@@ -106,10 +107,11 @@ function displayEventInfo() {
       document.getElementById("description").innerHTML = eventDescription;
       showPlannerTools(doc);
 
-      // select dates which match the eventDate list from the database and hightlight them
-      let eventDateList = eventDate.split(" "); // split the date string into an array
-      let eventDays = eventDateList[1].split(","); // split the day from the month
-      eventDays.pop(); // Renove the last element, which is an empty string
+      // Old code to get the eventDays from the eventDate string
+      // Before we had dateDay in the database
+      // let eventDateList = eventDate.split(" "); // split the date string into an array
+      // let eventDays = eventDateList[1].split(","); // split the day from the month
+      // eventDays.pop(); // Renove the last element, which is an empty string
 
       // highlight the dates from eventDays in the calendar
       let calendarDates = document.getElementsByClassName("calendar-dates");
@@ -117,21 +119,31 @@ function displayEventInfo() {
 
       // on click function to be attached to each of the suggested day elements
       const addDayToAttendance = (e) => {
-        // prevent multiple same day from being addded
+        // Adds or removes the date from the myAttendance array and updates the class of the element
         if (!myAttendance.includes(e.target.textContent)) {
+          // If the date is not already in the array, add it and change the class
           myAttendance.push(e.target.textContent);
-          e.target.classList.add("my-attendance");
-          console.log(myAttendance);
-          document.getElementById("my-attendance-list").textContent =
-            myAttendance;
+          myAttendance.sort(); // Sort the array to keep it in order
+          e.target.classList.add("selected-day"); // Highlight the selected date
+          console.log("Date selected: " + myAttendance);
+        } else {
+          // If the date is already in the array, remove it and change the class
+          myAttendance.splice(myAttendance.indexOf(e.target.textContent), 1);
+          e.target.classList.remove("selected-day"); // Remove the highlight from the date
+          console.log("Date removed: " + myAttendance);
         }
+        // Update the attendance list in the HTML
+        document.getElementById("my-attendance-list").textContent = myAttendance;
       };
 
+      // select dates which match the eventDate list from the database and hightlight them
       for (let i = 0; i < calendarDays.length; i++) {
         let day = calendarDays[i];
         if (eventDays.includes(day.textContent)) {
-          day.classList.add("suggested-day"); // Highlights the selected date
-
+          day.classList.add("suggested-day"); // Highlights the suggested dates
+        }
+        // Adds the click event listener to the suggested days
+        if (day.classList.contains("suggested-day")) {
           day.addEventListener("click", addDayToAttendance);
         }
       }
@@ -143,7 +155,7 @@ function showPlannerTools(doc) {
   firebase.auth().onAuthStateChanged((user) => {
     if (user) {
       eventPlanner = doc.data().hostId;
-       // Lets us know who the logged-in user is by logging their UID
+      // Lets us know who the logged-in user is by logging their UID
       console.log("Current User: " + user.uid);
       console.log("Event Planner: " + eventPlanner);
       if (user.uid == eventPlanner) {
@@ -232,18 +244,18 @@ function generateSweetMap(doc) {
 document.getElementById("submit-attendance").addEventListener("click", (e) => {
   let params = new URL(window.location.href);
   let eventID = params.searchParams.get("docID");
-
+console.log("Submitting attendance for event ID: " + eventID);
   db.collection("events")
     .doc(eventID)
     .get()
     .then((doc) => {
-      let existingAttendance = doc.data().attendance || [];
+      let existingAttendance = doc.data().attendeeDateVotes || [];
       let updatedAttendance = [...existingAttendance, ...myAttendance];
 
       db.collection("events")
         .doc(eventID)
         .update({
-          attendance: updatedAttendance, // Updates the array with duplicates allowed
+          attendeeDateVotes : updatedAttendance, // Updates the array with duplicates allowed
         })
         .then(() => {
           console.log("Attendance submitted", myAttendance);

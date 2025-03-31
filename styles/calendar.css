@@ -58,6 +58,16 @@
   background-color: #7c7979;
 }
 
+.suggested-day {
+  background-color: rgb(160, 30, 138);
+  border-radius: 100%;
+}
+
+.selected-day {
+  background-color: #00e8fc;
+  border-radius: 100%;
+}
+
 .current-date {
   background-color: #007bff;
   color: #fff;
