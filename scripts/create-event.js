@@ -4,6 +4,7 @@ const submitMobileBtn = document.getElementById("submit-event-mobile");
 function addEvent(e) {
   console.log("addEvent function called");
   const auth = firebase.auth();
+  //const imgString = document.querySelector("#event-image-preview").src.split(",")[1];
 
   let eventName = document.getElementById("event-name");
   let eventDetails = document.getElementById("event-details");
@@ -15,6 +16,7 @@ function addEvent(e) {
   let location = document.getElementById("event-location");
   let eventCode = generateCode();
   let hostID = db.collection("users").doc(auth.currentUser.uid);
+  let eventImg = document.querySelector("#event-image-preview").src.split(",")[1];
 
   console.log("selectedDay: ", selectedDay);
 
@@ -29,7 +31,9 @@ function addEvent(e) {
     location: location.value,
     planner: hostID,
     eventCode: eventCode,
+    eventImage: eventImg,
     dateConfirmed: false, // For use when confirmed the event (and provide highlight onto events)
+    
   };
 
   function generateCode() {
@@ -120,6 +124,27 @@ function swapActiveTime() {
     pmInput.checked = false;
   }
 }
+
+
+document.getElementById("event-image").addEventListener("change", function (file) {
+  const imgPrev = document.querySelector("#event-image-preview");
+  const image = file.target.files[0];
+  console.log(image);
+  if (image) {
+    var readFile = new FileReader();
+
+    readFile.onload = function (f) {
+
+      imgPrev.src = f.target.result;
+
+      //console.log(imgPrev.src.split(",")[1]);
+    };
+    readFile.readAsDataURL(image);
+  }
+  //console.log("File String: ", imgFileString);
+});
+
+
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();

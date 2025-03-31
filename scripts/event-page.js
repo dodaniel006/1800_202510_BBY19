@@ -88,6 +88,13 @@ function displayEventInfo() {
       eventDescription = doc.data().description;
       selectedTime = doc.data().selectedTime;
       eventCode = doc.data().eventCode;
+      eventImgString = doc.data().eventImage;
+
+      if(eventImgString == null){
+        document.getElementById("event-image").src = "./images/SweetSpot_Logo_1.0.png"
+      }else{
+        document.getElementById("event-image").src = "data:image/png;base64," + eventImgString;
+      }
 
       if (!doc.data().dateConfirmed) {
         dateIcon = "<span class='material-icons icon-text-align'>date_range</span>";

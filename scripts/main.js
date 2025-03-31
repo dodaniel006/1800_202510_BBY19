@@ -66,8 +66,19 @@ function displayEvents(userID) {
               let date = eventDoc.data().date;
               let time = eventDoc.data().time;
               let location = eventDoc.data().location;
+              let eventImg = eventDoc.data().eventImage;
               let newCard = template.content.cloneNode(true);
+              
+              
+              //console.log(eventImgString);
 
+              if (eventImg == null) {
+                eventImg = "./images/SweetSpot_Logo_1.0.png";
+              } else {
+                eventImg = "data:image/png;base64," + eventImg;
+              }
+
+              newCard.querySelector("img").src = eventImg;
               newCard.querySelector(".card-title").innerHTML = name;
               newCard.querySelector(".event-date").innerHTML = date;
               newCard.querySelector(".event-time").innerHTML = time;
