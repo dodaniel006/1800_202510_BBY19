@@ -276,11 +276,6 @@ legend {
   margin-right: 1%;
 }
 
-:root {
-  --x: 50px;
-  --y: 20px;
-}
-
 .nav-shape {
   background-color: #1c3144;
   height: 80px;
@@ -294,4 +289,8 @@ legend {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -55px;
+}
+
+.modal-title {
+  margin: 0 auto;
 }
