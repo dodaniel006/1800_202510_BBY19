@@ -1,6 +1,7 @@
 // Event listener for the join button
-document.getElementById("join-btn").addEventListener("click", (e) => {
-  const code = document.getElementById("inviteCode").value;
+ document.getElementById("join-btn").addEventListener("click", (e) => {
+  const input = document.getElementById("inviteCode");
+  const code = input.value;
 
   // Check if the code is in the correct format
   // The code should be 5 capital letters
@@ -27,6 +28,7 @@ document.getElementById("join-btn").addEventListener("click", (e) => {
         console.error("Error fetching events:", error);
       });
   } else {
-    alert("Invalid code. Please enter a valid code.");
+    //alert("Invalid code. Please enter a valid code.");
+    input.classList.add('is-invalid');
   }
-});
+}); 

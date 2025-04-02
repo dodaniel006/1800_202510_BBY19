@@ -89,7 +89,14 @@ body {
   font-family: Nautilus;
 }
 
-.sweet-button:hover {
+.sweet-button-secondary {
+  background-color: #1c3144;
+  color: white;
+  border-color: transparent;
+  font-family: Nautilus;
+}
+
+.sweet-button:hover, .sweet-button-secondary:hover{
   background-color: #00e8fc;
   color: #1c3144;
   border-color: transparent;
@@ -276,11 +283,6 @@ legend {
   margin-right: 1%;
 }
 
-:root {
-  --x: 50px;
-  --y: 20px;
-}
-
 .nav-shape {
   background-color: #1c3144;
   height: 80px;
@@ -294,4 +296,8 @@ legend {
   margin-left: auto;
   margin-right: auto;
   margin-bottom: -55px;
+}
+
+.modal-title {
+  margin: 0 auto;
 }
