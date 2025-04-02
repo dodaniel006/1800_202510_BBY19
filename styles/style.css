@@ -89,7 +89,14 @@ body {
   font-family: Nautilus;
 }
 
-.sweet-button:hover {
+.sweet-button-secondary {
+  background-color: #1c3144;
+  color: white;
+  border-color: transparent;
+  font-family: Nautilus;
+}
+
+.sweet-button:hover, .sweet-button-secondary:hover{
   background-color: #00e8fc;
   color: #1c3144;
   border-color: transparent;
