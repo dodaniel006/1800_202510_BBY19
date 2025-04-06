@@ -1,14 +1,17 @@
 "use=strict";
 
-let eventCodeToggle = false;
 const calendarDates = document.querySelector(".calendar-dates");
 const monthYear = document.getElementById("month-year");
 const prevMonthBtn = document.getElementById("prev-month");
 const nextMonthBtn = document.getElementById("next-month");
-
+let params = new URL(window.location.href);
+let eventID = params.searchParams.get("docID");
 let currentDate = new Date();
 let currentMonth = currentDate.getMonth();
 let currentYear = currentDate.getFullYear();
+let eventCodeToggle = false;
+let finalDateSelected = false;
+let dateSelected = 0;
 
 let suggestedDays = [];
 let myAttendance = [];
@@ -71,10 +74,6 @@ function renderCalendar(month, year) {
 renderCalendar(currentMonth, currentYear);
 
 function displayEventInfo() {
-  // Get eventID from params
-  let params = new URL(window.location.href);
-  let eventID = params.searchParams.get("docID");
-
   // Get event info from database
   db.collection("events")
     .doc(eventID)
@@ -101,14 +100,15 @@ function displayEventInfo() {
       if (!doc.data().dateConfirmed) {
         dateIcon =
           "<span class='material-icons icon-text-align'>date_range</span>";
+        dateSelected = "<b>Date:</b>&nbspTBD";
       } else {
         dateIcon = "<span class='material-icons icon-text-align'>today</span>";
+        dateSelected = "<b>Date:</b> &nbsp" + eventDate;
       }
 
       // Populate html with info
       document.getElementById("event-title").innerHTML = eventName;
-      document.getElementById("event-date").innerHTML =
-        dateIcon + "<b>Date Range:</b> &nbsp" + eventDate;
+      document.getElementById("event-date").innerHTML = dateIcon + dateSelected;
       // document.getElementById("event-time").innerHTML = "Time:	" + eventTime;
       document.getElementById("event-time").innerHTML =
         "<span class='material-icons icon-text-align'>schedule</span><b>Time:</b> &nbsp" +
@@ -178,9 +178,24 @@ function showPlannerTools(doc) {
         $("#plannerTools").load("./text/planner-tools.html", function () {
           console.log("Planner tools loaded.");
           let sweetMap = generateSweetMap(doc);
-          document.getElementById("sweetmapPlaceholder").innerHTML = sweetMap;
+          document.getElementById("date-select-placeholder").innerHTML =
+            sweetMap;
           document.getElementById("eventCode").style.visibility = "hidden";
           document.getElementById("eventCode").innerHTML = eventCode;
+          document
+            .getElementById("delete-event")
+            .addEventListener("click", (e) => {
+              let params = new URL(window.location.href);
+              let eventID = params.searchParams.get("docID");
+              deleteEventConfirmation(eventID);
+            });
+          if (doc.data().dateConfirmed) {
+            document.getElementById("date-select-header-2").innerText =
+              "Select a different day for your event:";
+          } else {
+            document.getElementById("date-select-header-2").innerText =
+              "Select the date for your event:";
+          }
           document
             .getElementById("toggleButton")
             .addEventListener("click", () => {
@@ -192,13 +207,6 @@ function showPlannerTools(doc) {
                 document.getElementById("eventCode").style.visibility =
                   "hidden";
               }
-            });
-          document
-            .getElementById("delete-event")
-            .addEventListener("click", (e) => {
-              let params = new URL(window.location.href);
-              let eventID = params.searchParams.get("docID");
-              deleteEventConfirmation(eventID);
             });
         });
         document.addEventListener("DOMContentLoaded", function () {});
@@ -249,30 +257,69 @@ function generateSweetMap(doc) {
   let chosenDates = [consensusDate[0]];
   let valueCount = 0;
   for (let i = 1; i < consensusCount.length; i++) {
-    if (consensusCount[i] == chosenDateCount[valueCount]) {
-      chosenDates[valueCount] += ", " + consensusDate[i];
-    } else {
-      valueCount++;
+    // if (consensusCount[i] == chosenDateCount[valueCount]) {
+    //   chosenDates[valueCount] += ", " + consensusDate[i]; }
+    if (consensusCount[i] != chosenDateCount[valueCount]) {
       chosenDateCount.push(consensusCount[i]);
       chosenDates.push(consensusDate[i]);
     }
   }
 
   // Creating the Ordered List with the most popular dates
-  let sweetMap = "The most ideal days for the event are:<br><ol>";
-  for (let i = 0; i < chosenDates.length; i++) {
+  let sweetMap = "";
+  for (let i = 0; i < (chosenDates.length < 5 ? chosenDates.length : 5); i++) {
     console.log(chosenDates[i] + " | " + chosenDateCount[i]);
     sweetMap +=
-      '<li class="listItem">' +
-      month +
+      '<button onclick="setFinalDate(' +
+      chosenDates[i] +
+      ')" id="date-' +
+      chosenDates[i] +
+      '" class="btn sweet-button my-1">' +
+      months[currentMonth] +
       " " +
       chosenDates[i] +
       " with " +
       chosenDateCount[i] +
-      " votes.</li>";
+      " votes." +
+      "</button>";
   }
   sweetMap += "</ol>";
   return attendeeDateVotes.length ? sweetMap : "No votes yet.";
+}
+
+function setFinalDate(date) {
+  if (!finalDateSelected) {
+    finalDateSelected = true;
+    dateSelected = date;
+    document.getElementById("date-" + date).classList.add("selected-day"); // Highlight the selected date
+  } else if (finalDateSelected && dateSelected == date) {
+    finalDateSelected = false;
+    document.getElementById("date-" + date).classList.remove("selected-day"); // Highlight the selected date
+  }
+}
+
+function submitFinalDate() {
+  if (finalDateSelected) {
+    db.collection("events")
+      .doc(eventID)
+      .update({
+        dateConfirmed: true,
+        date: months[currentMonth] + " " + dateSelected + ", " + currentYear,
+      })
+      .then(() => {
+        alert(
+          "Final date submitted: " +
+            months[currentMonth] +
+            " " +
+            dateSelected +
+            ", " +
+            currentYear
+        );
+        window.location.reload(); // Reload the page to update the event info
+      });
+  } else {
+    alert("Please select a date before submitting.");
+  }
 }
 
 document.getElementById("submit-attendance").addEventListener("click", (e) => {
@@ -293,6 +340,7 @@ document.getElementById("submit-attendance").addEventListener("click", (e) => {
         })
         .then(() => {
           console.log("Attendance submitted", myAttendance);
+          window.location.reload(); // Reload the page to update the event info
         });
     });
 });
