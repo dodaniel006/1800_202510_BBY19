@@ -90,27 +90,34 @@ function displayEventInfo() {
       eventCode = doc.data().eventCode;
       eventImgString = doc.data().eventImage;
 
-      if(eventImgString == null){
-        document.getElementById("event-image").src = "./images/SweetSpot_Logo_1.0.png"
-      }else{
-        document.getElementById("event-image").src = "data:image/png;base64," + eventImgString;
+      if (eventImgString == null) {
+        document.getElementById("event-image").src =
+          "./images/SweetSpot_Logo_1.0.png";
+      } else {
+        document.getElementById("event-image").src =
+          "data:image/png;base64," + eventImgString;
       }
 
       if (!doc.data().dateConfirmed) {
-        dateIcon = "<span class='material-icons icon-text-align'>date_range</span>";
+        dateIcon =
+          "<span class='material-icons icon-text-align'>date_range</span>";
       } else {
         dateIcon = "<span class='material-icons icon-text-align'>today</span>";
       }
 
       // Populate html with info
       document.getElementById("event-title").innerHTML = eventName;
-      document.getElementById("event-date").innerHTML = dateIcon + "<b>Date Range:</b> &nbsp" + eventDate;
+      document.getElementById("event-date").innerHTML =
+        dateIcon + "<b>Date Range:</b> &nbsp" + eventDate;
       // document.getElementById("event-time").innerHTML = "Time:	" + eventTime;
       document.getElementById("event-time").innerHTML =
-        "<span class='material-icons icon-text-align'>schedule</span><b>Time:</b> &nbsp" + selectedTime;
+        "<span class='material-icons icon-text-align'>schedule</span><b>Time:</b> &nbsp" +
+        selectedTime;
       document.getElementById("event-location").innerHTML =
-        "<span class='material-icons icon-text-align'>pin_drop</span><b>Location:</b> &nbsp" + eventLocation;
-      document.getElementById("event-about").innerHTML = "Get Excited About " + eventName + "!";
+        "<span class='material-icons icon-text-align'>pin_drop</span><b>Location:</b> &nbsp" +
+        eventLocation;
+      document.getElementById("event-about").innerHTML =
+        "Get Excited About " + eventName + "!";
       document.getElementById("description").innerHTML = eventDescription;
       showPlannerTools(doc);
 
@@ -140,7 +147,8 @@ function displayEventInfo() {
           console.log("Date removed: " + myAttendance);
         }
         // Update the attendance list in the HTML
-        document.getElementById("my-attendance-list").textContent = myAttendance;
+        document.getElementById("my-attendance-list").textContent =
+          myAttendance;
       };
 
       // select dates which match the eventDate list from the database and hightlight them
@@ -166,22 +174,34 @@ function showPlannerTools(doc) {
       console.log("Current User: " + user.uid);
       console.log("Event Planner: " + eventPlanner);
       if (user.uid == eventPlanner) {
+        console.log("User is the event planner.");
         $("#plannerTools").load("./text/planner-tools.html", function () {
+          console.log("Planner tools loaded.");
           let sweetMap = generateSweetMap(doc);
           document.getElementById("sweetmapPlaceholder").innerHTML = sweetMap;
           document.getElementById("eventCode").style.visibility = "hidden";
           document.getElementById("eventCode").innerHTML = eventCode;
-          document.getElementById("toggleButton").addEventListener("click", () => {
-            eventCodeToggle = !eventCodeToggle;
-            if (eventCodeToggle) {
-              document.getElementById("eventCode").style.visibility = "visible";
-            } else {
-              document.getElementById("eventCode").style.visibility = "hidden";
-            }
-          });
+          document
+            .getElementById("toggleButton")
+            .addEventListener("click", () => {
+              eventCodeToggle = !eventCodeToggle;
+              if (eventCodeToggle) {
+                document.getElementById("eventCode").style.visibility =
+                  "visible";
+              } else {
+                document.getElementById("eventCode").style.visibility =
+                  "hidden";
+              }
+            });
+          document
+            .getElementById("delete-event")
+            .addEventListener("click", (e) => {
+              let params = new URL(window.location.href);
+              let eventID = params.searchParams.get("docID");
+              deleteEventConfirmation(eventID);
+            });
         });
-        document.addEventListener("DOMContentLoaded", function () {
-        });
+        document.addEventListener("DOMContentLoaded", function () {});
       }
     } else {
       console.log("No user is logged in."); // Log a message when no user is logged in
@@ -192,7 +212,7 @@ function showPlannerTools(doc) {
 // Function that gets the Dates voted on by attendees and returns a string with the most popular dates
 function generateSweetMap(doc) {
   //Getting the necessary data from the database
-  let attendeeDateVotes = doc.data().attendeeDateVotes;
+  let attendeeDateVotes = doc.data().attendeeDateVotes || [];
   let month = doc.data().dateMonth;
   let consensusDate = [];
   let consensusCount = [];
@@ -242,16 +262,23 @@ function generateSweetMap(doc) {
   let sweetMap = "The most ideal days for the event are:<br><ol>";
   for (let i = 0; i < chosenDates.length; i++) {
     console.log(chosenDates[i] + " | " + chosenDateCount[i]);
-    sweetMap += "<li class=\"listItem\">" + month + " " + chosenDates[i] + " with " + chosenDateCount[i] + " votes.</li>";
+    sweetMap +=
+      '<li class="listItem">' +
+      month +
+      " " +
+      chosenDates[i] +
+      " with " +
+      chosenDateCount[i] +
+      " votes.</li>";
   }
   sweetMap += "</ol>";
-  return sweetMap;
+  return attendeeDateVotes.length ? sweetMap : "No votes yet.";
 }
 
 document.getElementById("submit-attendance").addEventListener("click", (e) => {
   let params = new URL(window.location.href);
   let eventID = params.searchParams.get("docID");
-console.log("Submitting attendance for event ID: " + eventID);
+  console.log("Submitting attendance for event ID: " + eventID);
   db.collection("events")
     .doc(eventID)
     .get()
@@ -262,10 +289,32 @@ console.log("Submitting attendance for event ID: " + eventID);
       db.collection("events")
         .doc(eventID)
         .update({
-          attendeeDateVotes : updatedAttendance, // Updates the array with duplicates allowed
+          attendeeDateVotes: updatedAttendance, // Updates the array with duplicates allowed
         })
         .then(() => {
           console.log("Attendance submitted", myAttendance);
         });
     });
 });
+
+const deleteEventConfirmation = async (eventId) => {
+  // show delete confirmation dialog
+  const confirmation = confirm(
+    "Are you sure you want to delete this event? This action cannot be undone."
+  );
+  confirmation ? deleteEvent(eventId) : console.log("Event deletion canceled.");
+};
+
+const deleteEvent = async (eventId) => {
+  db.doc(`events/${eventId}`)
+    .delete()
+    .then(function (doc) {
+      console.log("Document successfully deleted!");
+      // Redirect to events page after deletion
+      window.location.href = "main.html";
+    })
+    .catch(function (error) {
+      console.error("Error removing document: ", error);
+      alert("Error deleting event. Please try again.");
+    });
+};
