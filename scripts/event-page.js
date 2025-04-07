@@ -221,7 +221,6 @@ function showPlannerTools(doc) {
 function generateSweetMap(doc) {
   //Getting the necessary data from the database
   let attendeeDateVotes = doc.data().attendeeDateVotes || [];
-  let month = doc.data().dateMonth;
   let consensusDate = [];
   let consensusCount = [];
 
