@@ -68,7 +68,7 @@
     <!-------------------------------------------->
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link rel="stylesheet" href="./styles/style.css" />
-    <!-- <link rel="stylesheet" href="./styles/calendar.css" /> -->
+    <link rel="stylesheet" href="./styles/calendar.css" />
   </head>
 
   <body>
@@ -109,7 +109,7 @@
                 class="form-control"
                 id="event-image"
                 accept="image/*" />
-                <img id="event-image-preview"></img>
+                <img class="img-thumbnail" id="event-image-preview"></img>
             </div>
 
             <!-- AM / PM Select -->
@@ -170,19 +170,13 @@
               </div>
             </div>
 
-            <button
-              id="submit-event"
-              type="submit"
-              class="btn btn-primary primary-button">
-              Submit
-            </button>
           </form>
         </div>
 
         <div
           class="col-md-10 mx-auto col-lg-5 d-flex justify-content-center p-4">
           <!-- The calendar element -->
-           <style scoped>@import url("./styles/calendar.css");</style>
+           <!-- <style scoped>@import url("./styles/calendar.css");</style> -->
           <div class="calendar">
             <div class="calendar-header">
               <button id="prev-month">‹</button>
@@ -211,9 +205,16 @@
         <button
           id="submit-event-mobile"
           type="submit"
-          class="btn btn-primary primary-button">
+          class="btn sweet-button">
           Submit
         </button>
+
+        <button
+              id="submit-event"
+              type="submit"
+              class="btn sweet-button">
+              Submit
+            </button>
       </div>
     </div>
 

@@ -10,6 +10,7 @@
 }
 
 .calendar-header {
+  background-color: #f60665;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +43,7 @@
 }
 
 .calendar-weekdays {
-  background-color: #eaeef3;
+  background-color: #FFBA08;
 }
 
 .calendar-weekdays div {
@@ -55,38 +56,38 @@
 }
 
 .calendar-dates div:hover {
-  background-color: #7c7979;
+  color: #FFBA08;
+  background-color: #f60665;
 }
 
 .suggested-day {
-  background-color: rgb(160, 30, 138);
-  border-radius: 100%;
+  background-color: #f60665;
+  border-radius: 50%;
 }
 
 .selected-day {
   background-color: #00e8fc;
-  border-radius: 100%;
-}
-
-.current-date {
-  background-color: #007bff;
-  color: #fff;
   border-radius: 50%;
 }
 
-.btn-check:checked + .btn-active {
+.current-date {
+  color: #FFBA08;
+  border-radius: 50%;
+}
+
+.calendar-weekdays .btn-check:checked + .btn-active {
   background-color: #f60665;
   color: #fff5f5;
   border-color: transparent;
 }
 
-.btn-check + .btn:hover {
+.calendar-weekdays .btn-check + .btn:hover {
   background-color: #1c3144;
   color: white;
   border-color: transparent;
 }
 
-.btn.btn-inactive {
+.calendar-weekdays .btn.btn-inactive {
   background-color: #6d6d6c;
   color: black;
   border-color: transparent;
