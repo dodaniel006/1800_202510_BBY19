@@ -1,64 +1,96 @@
-# Project Name
+# BBY-19
 
-TRACKER TRACKER TRACKER
+SweetSpot Application
 
 ## Overview
 
-Summarize your project's purpose, problem solved, key features, user benefits, development context, and main technologies used.
+SweetSpot is a collaborative event planning application, allowing users to create events, suggest dates for the event, invitie others to contribute the dates they want, and finally confirm the event date. This was intended to help busy family or friends get together more often by removing the hassle of a singular organizer reaching out to multiple people trying to find that perfect day that works for everyone.
 
 Example:
 
-This client-side JavaScript web application provides real-time weather updates for cities worldwide. It simplifies accessing weather information through an intuitive mobile-first interface, allowing users to input a city name and receive data on temperature, humidity, and conditions.
+This client-side JavaScript web application provides users with an interface to create events, join events with an event code, and manage their created events. All elements are pure HTML and JS, either from Bootstrap or from our own creation, with the exception of the location picker map which was sourced from Mapbox.
 
-Developed for the [Course Name] course, applying User-Centred Design practices, agile project management processes, integrating a weather API, and Firebase backend services.
+Developed for the BCIT Comp 1800 course, applying User-Centred Design practices, agile project management processes, and a Firestore date store.
 
 ---
 
 ## Features
 
-Example:
-
-- Real-time weather updates for any city.
+- Creating user defined events.
+- Joining events with codes.
+- Submitting event dates you can attend (as an attendee).
+- Confirming the final event date (as a host/event creator).
+- Deleting events.
 - Responsive design for desktop and mobile.
-- Displays temperature, humidity, and weather conditions.
 
 ---
 
 ## Technologies Used
 
-Example:
-
 - **Frontend**: HTML, CSS, JavaScript
 - **Backend**: Firebase for hosting
 - **Database**: Firestore
-- **API**: OpenWeatherMap API
+- **API**: Mapbox API
 
 ---
 
 ## Usage
 
-Example:
-
-1. Open your browser and visit `http://localhost:3000`.
-2. Enter the name of the city in the search bar and press enter.
-3. View the weather information displayed on the screen.
+1. Open your browser and visit `http://localhost:5500`.
+2. Sign in or sign up to enter the main application.
+3. Use the Create event button in the header or use the create event icon in the footer.
+4. Populate the event fields.
+5. Select multiple dates you want to suggest for the event by clicking and dragging across multiple dates.
+6. Submit your event.
+7. Invite others to your event with the generated code.
+8. Wait for others to input their avaliablity.
+9. Finally, confirm the best suited date based on responses.
 
 ---
 
 ## Project Structure
 
-Example:
-
 ```
 project-name/
-├── src/
-│   ├── index.html
+├── fonts/
+│   ├── EBGaramond-Italic-VariableFont_wght.ttf
+│   ├── EBGaramond-VariableFont_wght.ttf
+│   └── Nautilus.otf
+├── images/
+│   └── ...images
+├── scripts/
+authentication.js
+│   ├── calendar.js
+│   ├── create-event.js
+│   ├── enter-code.js
+│   ├── event-page.js
+│   ├── firebaseAPI.js
+│   ├── main.js
+│   ├── map.js
+│   ├── script.js
+│   └── skeleton.js
+├── styles/
+│   ├── calendar.css
 │   ├── style.css
-│   ├── app.js
-│   └── components/
-├── package.json
+│   └── styleguide.html
+├── text/
+│   ├── enter-code-button.html
+│   ├── enter-code-modal.html
+│   ├── footer-after-login.html
+│   ├── footer.html
+│   ├── nav-after-login.html
+│   ├── nav-before-login.html
+│   ├── no-events.html
+│   └── planner-tools.html
+├── .gitignore
+├── abouts_us.html
+├── create-event.html
+├── event-page.html
+├── index.html
+├── login.html
+├── main.html
 ├── README.md
-└── .gitignore
+└── template.html
 ```
 
 ---
@@ -66,9 +98,9 @@ project-name/
 ## Contributors
 
 - Chell Jacques - BCIT CST Student who loves making things. Transgender Non-Binary
-- David - BCIT CST Student,is not the set rep, looking to expand my knowledge and build more projects.
-- Daiel - BCIT CST Student with a passion for computer hardware. Fun fact: I have built -500000000000000000000 computers.
-- Jazib - BCIT CST Student loves all things tech and computers. Fun fact: Pro gamer.
+- David Martinez - BCIT CST Student, Set A Rep, looking to expand my knowledge and build more projects.
+- Daiel Do - BCIT CST Student with a passion for computer hardware.
+- Jazib Jeehan - BCIT CST Student loves all things tech and computers.
 
 ---
 
@@ -76,9 +108,8 @@ project-name/
 
 Example:
 
-- Weather data sourced from [OpenWeatherMap](https://openweathermap.org/).
-- Code snippets for \_\_\_ algoirthm were adapted from resources such as [Stack Overflow](https://stackoverflow.com/) and [MDN Web Docs](https://developer.mozilla.org/).
-- Icons sourced from [FontAwesome](https://fontawesome.com/) and images from [Unsplash](https://unsplash.com/).
+- Mapbox sourced from [MapBox](https://www.mapbox.com/).
+- Select icons sourced from [Bootstrap](https://icons.getbootstrap.com/). Branded icons made by our very own Chell Jacques.
 
 ---
 
@@ -88,18 +119,18 @@ Example:
 
 Example:
 
-- Currently, the app only supports city-based weather searches.
-- Limited to basic weather parameters like temperature, humidity, and conditions.
+- Currently, the app doesn't have many validation for incorrect usage.
+- Time selection for event is currently set to AM or PM.
 - The user interface can be further enhanced for accessibility.
 
 ### Future Work
 
 Example:
 
-- Add support for location-based weather detection using GPS.
-- Implement additional weather parameters like wind speed and UV index.
+- Add event validation.
+- Improve calendar selection process.
+- Implement time selection field.
 - Create a dark mode for better usability in low-light conditions.
-- Integrate user accounts for saving favorite locations.
 
 ---
 
