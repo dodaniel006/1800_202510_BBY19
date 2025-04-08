@@ -59,7 +59,7 @@ project-name/
 ├── images/
 │   └── ...images
 ├── scripts/
-authentication.js
+│   ├── authentication.js
 │   ├── calendar.js
 │   ├── create-event.js
 │   ├── enter-code.js
