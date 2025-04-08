@@ -64,12 +64,11 @@ function displayEvents(userID) {
             if (eventDoc.id != "init") {
               let name = eventDoc.data().name;
               let date = eventDoc.data().date;
-              let time = eventDoc.data().time;
+              let time = eventDoc.data().selectedTime;
               let location = eventDoc.data().location;
               let eventImg = eventDoc.data().eventImage;
               let newCard = template.content.cloneNode(true);
-              
-              
+
               //console.log(eventImgString);
 
               if (eventImg == null) {
@@ -97,17 +96,19 @@ function displayEvents(userID) {
     });
 }
 
-
 function logout() {
-  firebase.auth().signOut().then(() => {
-    // Sign-out successful.
-    console.log("logging out user");
-    window.location.replace("./index.html");
-  }).catch((error) => {
-    console.log("firebase auth logout fail");
-  });
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      console.log("logging out user");
+      window.location.replace("./index.html");
+    })
+    .catch((error) => {
+      console.log("firebase auth logout fail");
+    });
 }
-
 
 // function readEnteredCode(enteredCode) {
 //   // could do validation of entered code for inccorect for mater
