@@ -1,3 +1,10 @@
+![Static Badge](https://img.shields.io/badge/BCIT%20-%20Comp1800%20-%20blue)
+![Static Badge](https://img.shields.io/badge/group%20-%20BBY19%20-%20blue?color=%23f60665)
+
+
+
+
+
 # BBY-19
 
 SweetSpot Application
