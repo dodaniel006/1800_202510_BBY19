@@ -64,6 +64,17 @@ function displayEvents(userID) {
             if (eventDoc.id != "init") {
               let name = eventDoc.data().name;
               let date = eventDoc.data().date;
+
+              // parse date to get first number and last numer, display it as March 20 - 26, 2025
+              let dateString = date.split(" ");
+              let month = dateString[0];
+              let dateNums = dateString[1].split(",") || dateString[1];
+              let startDate = dateNums[0];
+              let endDate = dateNums[dateNums.length - 2] || "";
+              let year = dateString[2];
+              let dateFormatted =
+                month + " " + startDate + " - " + endDate + ", " + year;
+
               let time = eventDoc.data().selectedTime;
               let location = eventDoc.data().location;
               let eventImg = eventDoc.data().eventImage;
@@ -79,7 +90,7 @@ function displayEvents(userID) {
 
               newCard.querySelector("img").src = eventImg;
               newCard.querySelector(".card-title").innerHTML = name;
-              newCard.querySelector(".event-date").innerHTML = date;
+              newCard.querySelector(".event-date").innerHTML = dateFormatted;
               newCard.querySelector(".event-time").innerHTML = time;
               newCard.querySelector(".event-location").innerHTML = location;
               console.log("Event ID: " + eventDoc.id);
