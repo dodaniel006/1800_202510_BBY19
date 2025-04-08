@@ -1,15 +1,7 @@
 ![Static Badge](https://img.shields.io/badge/BCIT%20-%20Comp1800%20-%20blue)
 ![Static Badge](https://img.shields.io/badge/group%20-%20BBY19%20-%20blue?color=%23f60665)
 
-
-
-
-
-# BBY-19
-
-SweetSpot Application
-
-## Overview
+## SweetSpot Overview
 
 SweetSpot is a collaborative event planning application, allowing users to create events, suggest dates for the event, invitie others to contribute the dates they want, and finally confirm the event date. This was intended to help busy family or friends get together more often by removing the hassle of a singular organizer reaching out to multiple people trying to find that perfect day that works for everyone.
 
