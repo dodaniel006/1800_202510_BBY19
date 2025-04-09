@@ -105,10 +105,9 @@ project-name/
 
 ## Acknowledgments
 
-Example:
-
 - Mapbox sourced from [MapBox](https://www.mapbox.com/).
-- Select icons sourced from [Bootstrap](https://icons.getbootstrap.com/). Branded icons made by our very own Chell Jacques.
+- Select icons and elements sourced from [Bootstrap](https://getbootstrap.com/) and [Bootstrap Icons](https://icons.getbootstrap.com/). Branded icons made by our very own Chell Jacques.
+- Carly Orr (BCIT Comp 1800 instructor) for code examples from 'Tech Tips' the course slack channel.
 
 ---
 
@@ -116,15 +115,11 @@ Example:
 
 ### Limitations
 
-Example:
-
 - Currently, the app doesn't have many validation for incorrect usage.
 - Time selection for event is currently set to AM or PM.
 - The user interface can be further enhanced for accessibility.
 
 ### Future Work
-
-Example:
 
 - Add event validation.
 - Improve calendar selection process.
