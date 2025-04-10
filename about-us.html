@@ -49,67 +49,33 @@
       rel="stylesheet"
       href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css"
     />
-
     <!-------------------------------------------->
     <!-- Other libraries and styles of your own -->
     <!-------------------------------------------->
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
 
   <body>
-    <!------------------------------>
-    <!-- Your HTML Layout go here -->
-    <!------------------------------>
-
     <!-- Navbar -->
     <nav id="navbarPlaceholder"></nav>
 
-    <div class="content">
-      <!-- the body of your page goes here -->
-      <div class="container-fluid bg-light text-dark">
-        <div class="container bg-light p-3">
-          <h1 class="">Good Morning, <span id="name-goes-here">...</span></h1>
-          <hr />
-          <p></p>
-        </div>
-      </div>
+    <p>
+      About us: <br />Contact Info <br />David Martinez: 123@mail.com<br />Chell
+      J: 234@mail.com<br />Jazib Jeehan: 567@mail.com<br />Daniel Do:
+      999@mail.com
+    </p>
+    <p>
+      We are software developement enthusiasts who want to make it easier <br />
+      for everyone to plan meet ups with there friends and family <br />becauase
+      everone knows the older you grow the harder that gets.
+    </p>
 
-      <!-- Enter Code Modal -->
-      <div id="enterCodePlaceholder"></div>
-
-      <div
-        id="event-container"
-        class="container light-container card shadow-sm p-3"
-      >
-        <div class="card shadow-sm h-100" id="event-gallery"></div>
-      </div>
-
-      <div class="footer-spacer"></div>
-
-      <template id="event-card-template">
-        <div class="card event-card m-1">
-          <img
-            class="card-img-top event-img"
-            src="./images/BBY01.jpg"
-            alt="Card image cap"
-          />
-          <div class="card-body">
-            <h3 class="card-title event-text"></h3>
-            <br />
-            <h5 class="event-date event-text"></h5>
-            <h5 class="event-time event-text"></h5>
-            <h5 class="event-location event-text"></h5>
-            <a href="#" class="btn btn-primary sweet-button">See More</a>
-          </div>
-        </div>
-      </template>
-    </div>
     <!-- Footer -->
     <nav id="footerPlaceholder"></nav>
 
     <!-- Link to scripts of your own -->
     <script src="./scripts/firebaseAPI.js"></script>
     <script src="./scripts/skeleton.js"></script>
-    <script src="./scripts/main.js"></script>
+    <script src="./scripts/authentication.js"></script>
   </body>
 </html>

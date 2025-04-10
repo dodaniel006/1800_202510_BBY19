@@ -1,8 +1,8 @@
 const submitBtn = document.getElementById("submit-event");
 const submitMobileBtn = document.getElementById("submit-event-mobile");
 
+// Gets event details from forms and calendar element and submits to firebase
 function addEvent(e) {
-  console.log("addEvent function called");
   const auth = firebase.auth();
 
   let eventName = document.getElementById("event-name");
@@ -15,9 +15,9 @@ function addEvent(e) {
   let location = document.getElementById("event-location");
   let eventCode = generateCode();
   let hostID = db.collection("users").doc(auth.currentUser.uid);
-  let eventImg = document.querySelector("#event-image-preview").src.split(",")[1];
-
-  console.log("selectedDay: ", selectedDay);
+  let eventImg = document
+    .querySelector("#event-image-preview")
+    .src.split(",")[1];
 
   let event = {
     name: eventName.value,
@@ -32,7 +32,6 @@ function addEvent(e) {
     eventCode: eventCode,
     eventImage: eventImg,
     dateConfirmed: false, // For use when confirmed the event (and provide highlight onto events)
-    
   };
 
   function generateCode() {
@@ -43,6 +42,7 @@ function addEvent(e) {
     return codeString;
   }
 
+  // Add to events collection and an eventRef to user's subcollection
   auth.onAuthStateChanged((user) => {
     if (user) {
       // First get the user's name to add to the event
@@ -58,8 +58,6 @@ function addEvent(e) {
             db.collection("events")
               .add(event)
               .then((docRef) => {
-                console.log("Event added with ID: ", docRef.id);
-
                 // Add a reference to the created event in the user's subcollection
                 db.collection("users")
                   .doc(user.uid)
@@ -124,19 +122,21 @@ function swapActiveTime() {
   }
 }
 
-document.getElementById("event-image").addEventListener("change", function (file) {
-  const imgPrev = document.querySelector("#event-image-preview");
-  const image = file.target.files[0];
-  console.log(image);
-  if (image) {
-    var readFile = new FileReader();
+document
+  .getElementById("event-image")
+  .addEventListener("change", function (file) {
+    const imgPrev = document.querySelector("#event-image-preview");
+    const image = file.target.files[0];
+    console.log(image);
+    if (image) {
+      var readFile = new FileReader();
 
-    readFile.onload = function (f) {
-      imgPrev.src = f.target.result;
-    };
-    readFile.readAsDataURL(image);
-  }
-});
+      readFile.onload = function (f) {
+        imgPrev.src = f.target.result;
+      };
+      readFile.readAsDataURL(image);
+    }
+  });
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
