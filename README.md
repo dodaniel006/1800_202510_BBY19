@@ -66,7 +66,6 @@ project-name/
 │   ├── firebaseAPI.js
 │   ├── main.js
 │   ├── map.js
-│   ├── script.js
 │   └── skeleton.js
 ├── styles/
 │   ├── calendar.css

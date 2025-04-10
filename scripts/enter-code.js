@@ -28,7 +28,6 @@
         console.error("Error fetching events:", error);
       });
   } else {
-    //alert("Invalid code. Please enter a valid code.");
     input.classList.add('is-invalid');
   }
 }); 

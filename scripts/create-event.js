@@ -4,7 +4,6 @@ const submitMobileBtn = document.getElementById("submit-event-mobile");
 function addEvent(e) {
   console.log("addEvent function called");
   const auth = firebase.auth();
-  //const imgString = document.querySelector("#event-image-preview").src.split(",")[1];
 
   let eventName = document.getElementById("event-name");
   let eventDetails = document.getElementById("event-details");
@@ -125,7 +124,6 @@ function swapActiveTime() {
   }
 }
 
-
 document.getElementById("event-image").addEventListener("change", function (file) {
   const imgPrev = document.querySelector("#event-image-preview");
   const image = file.target.files[0];
@@ -134,17 +132,11 @@ document.getElementById("event-image").addEventListener("change", function (file
     var readFile = new FileReader();
 
     readFile.onload = function (f) {
-
       imgPrev.src = f.target.result;
-
-      //console.log(imgPrev.src.split(",")[1]);
     };
     readFile.readAsDataURL(image);
   }
-  //console.log("File String: ", imgFileString);
 });
-
-
 
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -156,9 +148,6 @@ submitBtn.addEventListener("click", (e) => {
     spread: 70,
     origin: { y: 0.6 },
   });
-
-  // Toast here? Or perhaps we can throw it on main.html using session storage (See link below)
-  // https://stackoverflow.com/questions/44244193/display-toast-messages-after-redirecting-to-url
 
   // Redirect to main after 1 sec, so the confetti can play a bit
   setTimeout(() => {
@@ -177,11 +166,22 @@ submitMobileBtn.addEventListener("click", (e) => {
     origin: { y: 0.6 },
   });
 
-  // Toast here? Or perhaps we can throw it on main.html using session storage (See link below)
-  // https://stackoverflow.com/questions/44244193/display-toast-messages-after-redirecting-to-url
-
   // Redirect to main after 1 sec, so the confetti can play a bit
   setTimeout(() => {
     window.location.href = "main.html";
   }, 1000);
 });
+
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      console.log("logging out user");
+      window.location.replace("./index.html");
+    })
+    .catch((error) => {
+      console.log("firebase auth logout fail");
+    });
+}

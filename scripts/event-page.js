@@ -12,7 +12,6 @@ let currentYear = currentDate.getFullYear();
 let eventCodeToggle = false;
 let finalDateSelected = false;
 let dateSelected = 0;
-
 let suggestedDays = [];
 let myAttendance = [];
 
@@ -120,12 +119,6 @@ function displayEventInfo() {
         "Get Excited About " + eventName + "!";
       document.getElementById("description").innerHTML = eventDescription;
       showPlannerTools(doc);
-
-      // Old code to get the eventDays from the eventDate string
-      // Before we had dateDay in the database
-      // let eventDateList = eventDate.split(" "); // split the date string into an array
-      // let eventDays = eventDateList[1].split(","); // split the day from the month
-      // eventDays.pop(); // Renove the last element, which is an empty string
 
       // highlight the dates from eventDays in the calendar
       let calendarDates = document.getElementsByClassName("calendar-dates");
@@ -365,3 +358,18 @@ const deleteEvent = async (eventId) => {
       alert("Error deleting event. Please try again.");
     });
 };
+
+function logout() {
+  firebase
+    .auth()
+    .signOut()
+    .then(() => {
+      // Sign-out successful.
+      console.log("logging out user");
+      window.location.replace("./index.html");
+    })
+    .catch((error) => {
+      console.log("firebase auth logout fail");
+    });
+}
+
