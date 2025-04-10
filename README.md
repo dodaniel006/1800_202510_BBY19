@@ -35,7 +35,7 @@ Developed for the BCIT Comp 1800 course, applying User-Centred Design practices,
 
 ## Usage
 
-1. Open your browser and visit `http://localhost:5500`.
+1. Open your browser and visit `https://sweetspot-bby19.ca/`.
 2. Sign in or sign up to enter the main application.
 3. Use the Create event button in the header or use the create event icon in the footer.
 4. Populate the event fields.
